@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+     
+    <h:head>
+
+<style>
+img.smart{
+
+    	width:500px;
+       position: relative;
+  		 top: -400px;
+  		 right: -506px;
+    }
+
+</style>
+    
+    </h:head>
+ 
+    <h:body>
+       
+      
+    	
+    	
+    	 <h:form>
+    	 
+    	 <f:metadata>
+    	
+		    <f:viewAction action="#{pessoabean.atualizarUsuarioLogado}" />
+		</f:metadata>
+		
+<div>
+		
+		
+		<p:outputLabel value="#{pessoabean.usuarioLogado.nome}">-</p:outputLabel>
+		<p:outputLabel value="#{pessoabean.usuarioLogado.sobrenome}"> Seja bem vinda</p:outputLabel>
+
+		
+</div>
+
+<div class="foto2">
+    	 <h:graphicImage class="smart" value="resources/img/bk.png" />
+    	
+    	 </div>
+    	 
+        
+    			  </h:form>
+        
+      
+    </h:body>
+</html>

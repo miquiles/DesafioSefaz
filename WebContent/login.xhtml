@@ -1,0 +1,216 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+     
+    <h:head>
+<style>
+
+h1{
+    font-family: sans-serif;
+    animation-name: move;
+animation-duration: 800ms;
+}
+
+
+* {
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+	
+  height: 100vh;
+}
+
+body {
+  background-color: #7159c1;
+ 
+  font-family: Roboto, Arial, sans-serif;
+  
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 32px;
+  letter-spacing: 1px;
+  margin: 20px 0;
+  color: white;
+  
+}
+
+form {
+  margin: 20px 0;
+  background-color: white;
+  padding: 30px 25px;
+  border-radius: 5px;
+}
+
+form .input-block {
+  margin-bottom: 20px;
+}
+
+form .input-block label {
+  font-size: 14px;
+  color: darkslateblue;
+}
+
+form .input-block input {
+  width: 100%;
+  display: block;
+  margin-top: 8px;
+  padding: 7px;
+  font-size: 16px;
+  color: #7159c1;
+  border-radius: 2px;
+  border: 1px solid #ccddef;
+  outline-color: #7159c1;
+}
+
+form .ui-button-text{
+  display: block;
+  min-width: 209px;
+  border: none;
+  background-color: #7159c1;
+  color: white;
+    margin: auto;
+  padding: 7px;
+}
+
+form {
+animation-name: move;
+animation-duration: 1s;
+}
+
+@keyframes move {
+from {
+	opacity:0;
+	transform: translate(-45%);
+}
+
+to {
+	opacity:1;
+	transform: translate(0%);
+
+}
+
+}
+
+.ui-messages .ui-widget{
+    padding: 10px;
+
+}
+
+.msg{
+animation-name: move;
+animation-duration: 4s;
+margin-left: 950px;
+    height: 40px;
+    background-color: #7159c1;
+    
+  
+}
+
+.ui-messages-info{
+  color: #f2f2f2;
+    background-color: #f32929;
+    border-color: #000000;
+}
+
+
+
+.img{
+width: 60px;
+margin-bottom: 14px;
+margin-left: 74px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+    
+    </h:head>
+ 
+    <h:body>
+    
+    
+    
+    <div class="msg">
+       <p:messages id="messages" showDetail="true" closable="true">
+     			   <p:autoUpdate/>
+    			</p:messages>
+    			
+    			</div>
+    			
+    			 
+        <section class="form-section">
+    	
+    	<h1>Acessar sua conta</h1>
+    	
+    	<div class="form-wrapper">
+    	
+    	 <h:form>
+    	 <div class="foto">
+    	 <h:graphicImage class="img" value="resources/img/access.png" />
+    	
+    	 </div>
+        
+        		<div class="input-block">
+        		<p:outputLabel value="Email"/>
+        		<p:inputText value="#{loginbean.txtEmail}"/>
+        		</div>
+        	
+        		<div class="input-block">
+        		<p:outputLabel value="Senha"/>
+        		<p:password value="#{loginbean.txtSenha}"/>
+        		</div>
+        		
+        		<p:commandButton value="Acessar"  action="#{loginbean.entrar}" update="@form"/>
+        		
+        		
+        		<br/>
+        		<br/>
+        		
+        		<h:commandLink  style="
+   				 color: #c2baba;
+   				 opacity: 60%;
+   				 text-align:center;
+   				 text-decoration: none;
+   				 padding: 29px;
+        		" value="Não tenho cadastro" action="cadastrar.xhtml"/>
+        		
+        		
+        		
+    			  </h:form>
+    			  
+        </div>
+        
+        </section>
+        
+         
+      
+    </h:body>
+</html>
