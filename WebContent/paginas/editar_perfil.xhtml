@@ -52,7 +52,7 @@ h1 {
 }
 
 form {
-  margin: -36px ;
+  margin: 0px ;
   background-color: white;
  
   border-radius: 5px;
@@ -68,7 +68,7 @@ form .input-block label {
 }
 
 form .input-block input {
-  width: 40%;
+  width: 15%;
   display: block;
   margin-top: 8px;
   padding: 7px;
@@ -92,12 +92,35 @@ form .ui-button-text{
 
 
 
+
+.input-block{
+
+    background-color: #f6fffb;
+    width: 80%;
+    padding: 10px;
+    margin-left: 254px;
+
+}
+
+.listaPessoas{
+background-color: white;
+margin-left: 600px;
+margin-top: -501px;
+margin-right: 40px;
+}
+.ui-datatable-tablewrapper{
+width: 650px;
+border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+
+}
 .msg{
 
-margin-left: 950px;
-margin-top: 48px;
-height: 40px;
-
+margin-left: 520px;
+    margin-top: 20px;
+    height: 40px;
+    margin-right: 145px;
     
   }
   
@@ -107,39 +130,19 @@ height: 40px;
     border-color: #000000;
 }
 
-.input-block{
 
-    background-color: #f6fffb;
-    width: 100%;
-    padding: 30px;
-
-}
-
-.listaPessoas{
-background-color: white;
-margin-left: 600px;
-margin-top: -501px;
-margin-right: 20px;
-}
-.ui-datatable-tablewrapper{
-width: 548px;
-
-}
 
 </style>
 
     
     </h:head>
+ <ui:include src="/template/principal.xhtml" />
+ 
  
     <h:body>
-     <ui:include src="/templates/sidebar.xhtml"> </ui:include>
+   
      
-       <div class="msg">
-       <p:messages id="messages" showDetail="true" closable="true">
-     			   <p:autoUpdate/>
-    			</p:messages>
-    			
-    			</div>
+       
        
         <section class="form-section">
     	<h1>Edite seus dados</h1>
@@ -150,28 +153,52 @@ width: 548px;
     	 
     	  
         	<div class="input-block">
-        	
+        	<div class="msg">
+       <p:messages id="messages" showDetail="true" closable="true">
+     			   <p:autoUpdate/>
+    			</p:messages>
+    			
+    			</div>
         	
         		<p:outputLabel value="ID"/>
         		<h:inputText value="#{pessoabean.pessoa.id}"/>
-        		
+        	
         		<p:outputLabel value="Nome"/>
         		<h:inputText value="#{pessoabean.pessoa.nome}"/>
-        		<br/>
+        	
         		<p:outputLabel value="Sobrenome"/>
         		<h:inputText value="#{pessoabean.pessoa.sobrenome}"/>
-        		<br/>
+        		
         		<p:outputLabel value="Email"/>
         		<h:inputText value="#{pessoabean.pessoa.email}"/>
-        		<br/>
+        		
         		<p:outputLabel value="CPF"/>
         		<h:inputText value="#{pessoabean.pessoa.CPF}"/>
+        		<p:outputLabel value="Sexo"/>
+        			
+        		
+        		 <p:selectOneMenu id="sexo" value="#{pessoabean.pessoa.sexo}" style="width:170px">
+            <f:selectItem itemLabel="Sexo" itemValue="" />
+            <f:selectItem itemLabel="Masculino" itemValue="masculino" />
+            <f:selectItem itemLabel="Feminino" itemValue="feminino" />
+            <f:selectItem itemLabel="Outros" itemValue="outros" />
+            
+          
+        </p:selectOneMenu>
+        		
+        		
+        		<br/>
         		<br/>
         		<p:outputLabel value="Senha"/>
         		<h:inputText value="#{pessoabean.pessoa.senha}"/>
         		<br/>
         		
-        		<p:commandButton value="Salvar" action="#{pessoabean.update}" update="@form"/>
+        		<h:commandButton value="Salvar" action="#{pessoabean.update}" update="@form"/>
+        		<h:commandButton value="Remover" id="btnRemover" action="#{pessoabean.remover}" update="@form"/> 
+        		
+        		<h:commandButton value="Limpar campos" action="#{pessoabean.limparCampos}" update="@form"/>
+        		
+        		
         		
         		
         		
@@ -183,44 +210,62 @@ width: 548px;
         		
         		
         		<div class="listaPessoas">
+        		<p:dialog header="Lista de usuários" width="500px" widgetVar="dlg1" visible="true" style="left:214px">
+        		<p:dataTable value="#{pessoabean.testeListar}" var="p">
         		
-        		<p:dataTable value="#{pessoabean.testeListar}" var="pessoa">
         			<p:column headerText="Id">
-        			<h:outputText value="#{pessoa.id}"/>
+        			
+        			<h:outputText value="#{p.id}"/>
         			
         			</p:column>
         			
         			<p:column headerText="Nome">
-        			<h:outputText value="#{pessoa.nome}"/>
+        			
+        			<h:outputText value="#{p.nome}"/>
         			
         			</p:column>
         			
         			<p:column headerText="Sobrenome">
-        			<h:outputText value="#{pessoa.sobrenome}"/>
+        			
+        			<h:outputText value="#{p.sobrenome}"/>
         			
         			</p:column>
         			
         			<p:column headerText="CPF">
-        			<h:outputText value="#{pessoa.CPF}"/>
+        			
+        			<h:outputText value="#{p.CPF}"/>
         			
         			</p:column>
         			
         			
         			<p:column headerText="Senha">
-        			<h:outputText value="#{pessoa.senha}"/>
+        			
+        			<h:outputText value="#{p.senha}"/>
         			
         			</p:column>
+        			
+        				
+        			
+        			
+        			<p:column headerText="Sexo">
+        			<h:outputText value="#{p.sexo}"/>
+        			
+        			</p:column>
+        			
         			
         			
         			
         			<p:column headerText="Editar">
         			<h:commandLink value="Editar">
-        			<f:setPropertyActionListener value="#{pessoa}" target="#{pessoabean.pessoa}">
+        			<f:setPropertyActionListener value="#{p}" target="#{pessoabean.pessoa}">
         			</f:setPropertyActionListener>
         			</h:commandLink>
         			</p:column>
+        			
+        		
         		
         		</p:dataTable>
+        		</p:dialog>
     			</div>
         		
         		

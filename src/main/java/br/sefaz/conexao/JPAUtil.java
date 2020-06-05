@@ -30,6 +30,11 @@ public class JPAUtil {
 		return factory.createEntityManager();
 	}
 	
+	//metodo que identifica a chave primaria de um objeto
+	public static Object getPrimaryKey (Object entity) {
+		return factory.getPersistenceUnitUtil().getIdentifier(entity);
+	}
+	
 	
 		
 	}

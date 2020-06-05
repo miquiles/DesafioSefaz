@@ -4,19 +4,17 @@
     xmlns:p="http://primefaces.org/ui">
      
     <h:head>
-    <style>
-    
-.form-wrapper{
-
-width: 700px;
-}
+<style>
 
 h1{
     font-family: sans-serif;
+    animation-name: move;
+animation-duration: 800ms;
 }
 
 
 * {
+
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -24,12 +22,15 @@ h1{
 
 html,
 body {
+	
   height: 100vh;
 }
 
 body {
   background-color: #7159c1;
+ 
   font-family: Roboto, Arial, sans-serif;
+  
 }
 
 section {
@@ -44,14 +45,11 @@ h1 {
   letter-spacing: 1px;
   margin: 20px 0;
   color: white;
-  animation-duration: 800ms;
-  font-family: sans-serif;
-    animation-name: move;
   
 }
 
 form {
-  margin: 20px 0;
+  margin: 20 0px;
   background-color: white;
   padding: 30px 25px;
   border-radius: 5px;
@@ -107,79 +105,118 @@ to {
 
 }
 
+.ui-messages .ui-widget{
+    padding: 10px;
+
+}
 
 .msg{
 animation-name: move;
 animation-duration: 4s;
 margin-left: 950px;
-   height: 40px;
+    height: 40px;
     background-color: #7159c1;
     
-  }
   
+}
+
 .ui-messages-info{
   color: #f2f2f2;
     background-color: #f32929;
     border-color: #000000;
 }
 
+
+
 .img{
-width: 75px;
+width: 60px;
 margin-bottom: 14px;
-margin-left: 295px;
+margin-left: 74px;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
 
     
     </h:head>
  
     <h:body>
-       <div class="msg">
+    
+    
+    
+    <div class="msg">
        <p:messages id="messages" showDetail="true" closable="true">
      			   <p:autoUpdate/>
     			</p:messages>
     			
     			</div>
-       
+    			
+    			 
         <section class="form-section">
-    	<h1>Cadastre seus dados</h1>
+    	
+    	<h1>Acessar sua conta</h1>
     	
     	<div class="form-wrapper">
+    	
     	 <h:form>
-    	 
-    	  <div class="foto">
-    	 <h:graphicImage class="img" value="resources/img/man.png" />
+    	 <div class="foto">
+    	 <h:graphicImage class="img" value="/resources/img/access.png" />
     	
     	 </div>
-        	<div class="input-block">
-        	
-        	
-        		<p:outputLabel value="Nome"/>
-        		<p:inputText value="#{pessoabean.pessoa.nome}"/>
-        		<br/>
-        		<p:outputLabel value="Sobrenome"/>
-        		<p:inputText value="#{pessoabean.pessoa.sobrenome}"/>
-        		<br/>
+        
+        		<div class="input-block">
         		<p:outputLabel value="Email"/>
-        		<p:inputText value="#{pessoabean.pessoa.email}"/>
-        		<br/>
-        		<p:outputLabel value="CPF"/>
-        		<p:inputText value="#{pessoabean.pessoa.CPF}"/>
-        		<br/>
+        		<h:inputText value="#{loginbean.txtEmail}"/>
+        		</div>
+        	
+        		<div class="input-block">
         		<p:outputLabel value="Senha"/>
-        		<p:password value="#{pessoabean.pessoa.senha}"/>
+        		<h:inputSecret value="#{loginbean.txtSenha}"/>
+        		</div>
+        		
+        		<p:commandButton value="Acessar"  action="#{loginbean.entrar}" update="@form"/>
+        		
+        		
+        		
+        		
+        		<br/>
+        		<br/>
+        		<br/>
         		<br/>
         		
-        		<p:commandButton value="Salvar" action="#{pessoabean.salvar}"/>
-        		<p:commandButton value="Logar" action="login.xhtml"/>
+        		<h:commandLink  style="
+   				 color: #c2baba;
+   				 opacity: 60%;
+   				 text-align:center;
+   				 text-decoration: none;
+   				 padding: 29px;
+        		" value="Não tenho cadastro" action="cadastrar.xhtml"/>
         		
-    			</div>
-    			
+        		
+        		
+        		
+        		
     			  </h:form>
+    			  
         </div>
         
         </section>
+        
+         
       
     </h:body>
 </html>

@@ -20,14 +20,20 @@ public class Pessoa {
 	private Long id;
 	@Column(name = "cpf", nullable = false)
 	private String CPF;
+	
 	@Column (name = "email", nullable = false)
 	private String email;
+	
 	@Column(name = "senha", nullable = false)
 	private String senha;
 	@Column(name = "nome", nullable = false)
 	private String nome;
 	@Column(name = "sobrenome", nullable = false)
 	private String sobrenome;
+	
+	@Column(name = "sexo", nullable = false)
+	private String sexo;
+	
 	
 
 	
@@ -67,6 +73,12 @@ public class Pessoa {
 	}
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
+	}
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 
 	

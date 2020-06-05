@@ -11,6 +11,24 @@ import br.sefaz.conexao.JPAUtil;
 public class PessoaDao {
 	
 	
+	public void removerPeloID (Pessoa pessoa) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		
+		entityTransaction.begin();
+		//esse objeto retornará o id. Metodo criado em JPAUtil
+		Object id = JPAUtil.getPrimaryKey(pessoa);
+		entityManager.createNativeQuery("delete from pessoa where id="+id).executeUpdate();
+		
+	
+		
+		entityTransaction.commit();
+		entityManager.close();
+		
+		
+	}
+	
+	
 	public Pessoa update(Pessoa pessoa) {
 		
 		EntityManager entityManager = JPAUtil.getEntityManager();
@@ -76,6 +94,8 @@ public class PessoaDao {
 		return pessoa;
 
 	}
+	
+	
 	
 		
 		

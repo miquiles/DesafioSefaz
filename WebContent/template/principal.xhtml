@@ -1,0 +1,205 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	 xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+
+
+<style>
+.ui-panelgrid {
+	text-align: center;
+}
+
+.customPanelGrid .ui-panelgrid-content {
+	align-items: center;
+}
+
+
+
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+header {
+	position: fixed;
+	left: 0;
+	top: 0px;
+	width: 20%;
+	height:100%;
+	padding: 65px 0;
+	text-align: center;
+	background: #2f3233;
+}
+
+
+
+
+
+
+a {
+	text-decoration: none;
+	color: white;
+	size: 10px;
+	
+	font-size: 25px;
+	font-family: sans-serif;
+	
+}
+
+h2 {
+	text-align: center;
+	color: grey;
+}
+
+
+
+
+
+
+
+
+
+.center {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 0 2%;
+}
+
+
+.usuario{
+
+align-items: center;
+    align-items: center;
+    /* padding: 87px; */
+    margin-top: 85px;
+    color: #d3d368;
+    font-size: 17px;
+    font-family: sans-serif;
+}
+
+.sair{
+color: white;
+font-size: 15px;
+}
+.img{
+width: 75px;
+margin-bottom: 14px;
+margin-left: 0px;
+
+}
+
+
+
+</style>
+
+<h:form>
+
+
+
+
+
+
+
+	<header>
+
+		<div class="center">
+
+			<nav>
+
+				<ul>
+					<h:link>
+						<a
+							onclick="window.open('https://www.linkedin.com/in/pedromiquiles/','_blank')"
+							style="color: #00fff3"> Controle de Gastos</a>
+							
+							<br/>
+							<br/>
+					</h:link>
+					<h:link>
+						<a href="index.xhtml"> Home </a>
+						<br/>
+							<br/>
+					</h:link>
+						
+						
+					<h:link>
+						<a href=""> Lista de despesas </a>
+						<br/>
+							<br/>
+					</h:link>
+						
+							
+					<h:link>
+						<a href="editar_perfil.xhtml"> Meu perfil </a>
+						<br/>
+							<br/>
+					</h:link>
+						
+							
+					
+				</ul>
+				 <f:metadata>
+    	
+		    <f:viewAction action="#{pessoabean.atualizarUsuarioLogado}" />
+		</f:metadata>
+		
+		<div class="usuario">
+		
+		<p:outputLabel style="color:white;"> Seja bem vindo </p:outputLabel>
+			<br/>
+			<br/>
+			<br/>
+			<div class="foto">
+    	 <h:graphicImage class="img" value="/resources/img/man.png" />
+    	
+    	 </div>
+			
+				<p:outputLabel style="color:white;">Usuário : </p:outputLabel>
+				<p:outputLabel value="#{pessoabean.usuarioLogado.nome}"></p:outputLabel>
+		
+				<p:outputLabel value="#{pessoabean.usuarioLogado.sobrenome}"></p:outputLabel>
+			
+			<br/>
+			
+			<p:outputLabel style="color:white;">Email : </p:outputLabel>
+				<p:outputLabel value="#{pessoabean.usuarioLogado.email}"></p:outputLabel>
+			<br/>
+				
+				
+			
+			
+			<h:link>
+						<a class="sair" href="login.xhtml"> Sair </a>
+						</h:link>
+</div>
+			</nav>
+
+		</div>
+	</header>
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+	
+
+
+
+</h:form>
+
+
+</html>

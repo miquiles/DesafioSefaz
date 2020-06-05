@@ -18,11 +18,12 @@ public class JunitTest {
 		PessoaDao pessoaDao = new PessoaDao();
 		Pessoa pessoa = new Pessoa();
 		
-		pessoa.setCPF("testes");
-		pessoa.setEmail("testes");
-		pessoa.setNome("testes");
-		pessoa.setSenha("testes");
-		pessoa.setSobrenome("testes");
+		pessoa.setCPF("0101");
+		pessoa.setEmail("roberto@carlos.henry");
+		pessoa.setNome("Robero");
+		pessoa.setSenha("123");
+		pessoa.setSobrenome("Carlos");
+		pessoa.setSexo("M");
 		
 		pessoaDao.salvarPessoa(pessoa);
 	}

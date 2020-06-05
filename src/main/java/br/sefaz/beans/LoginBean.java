@@ -52,7 +52,7 @@ public class LoginBean {
 			sessao.setAttribute("usuarioLogado", usuarioLogado);
 			// testando o retorno 
 			System.out.println("Bem vindo "+ usuarioLogado);
-			return "principal.xhmtl?faces-redirect=true&amp;includeViewParams=true";
+			return "/paginas/index.xhmtl?faces-redirect=true&amp;includeViewParams=true";
 		}else {
 			
 			FacesContext.getCurrentInstance()

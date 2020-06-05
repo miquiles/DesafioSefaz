@@ -28,7 +28,21 @@ public class PessoaBean {
 	
 	
 	private Pessoa usuarioLogado;
+	
+	public void limparCampos() {
+		
+		pessoa = new Pessoa();
+	}
 			
+	public void remover() {
+		
+		pessoaDao.removerPeloID(pessoa);
+		pessoa = new Pessoa();
+		FacesContext.getCurrentInstance()
+		.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"","Removido com sucesso!"));
+		
+	}
+	
 	
 	public void update(){
 		
@@ -76,6 +90,8 @@ public class PessoaBean {
 		this.pessoa = pessoaDao.salvarPessoa(pessoa);
 		FacesContext.getCurrentInstance()
 		.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"","Salvo com sucesso"));
+		
+		
 		
 		}
 		}
