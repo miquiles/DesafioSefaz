@@ -24,9 +24,19 @@ public class PessoaBean {
 	List<Pessoa> listarTodos = new ArrayList<Pessoa>();
 	List<Pessoa> listarUsuarios = new ArrayList<Pessoa>();
 	
+	List<Pessoa> testeListar = new ArrayList<Pessoa>();
+	
 	
 	private Pessoa usuarioLogado;
 			
+	
+	public void update(){
+		
+		this.pessoa = pessoaDao.update(pessoa);
+		FacesContext.getCurrentInstance()
+		.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"","Editado com sucesso!"));
+		
+	}	
 	
 	
 	public void carregarPessoas() {
@@ -69,6 +79,8 @@ public class PessoaBean {
 		
 		}
 		}
+		
+		
 	}
 	
 	
@@ -144,6 +156,16 @@ public class PessoaBean {
 
 	public void setUsuarioLogado(Pessoa usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
+	}
+
+	public List<Pessoa> getTesteListar() {
+		
+		testeListar = pessoaDao.listarTodos();
+		return testeListar;
+	}
+
+	public void setTesteListar(List<Pessoa> testeListar) {
+		this.testeListar = testeListar;
 	}
 
 

@@ -6,7 +6,10 @@
    <persistence-unit name="dbsefaz01" transaction-type="RESOURCE_LOCAL">
    
    <class>br.sefaz.entidades.Pessoa</class>
-   <class>br.sefaz.test.TestJPA</class>
+
+   
+  
+   
        <properties>
        
            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/dbsefaz01?useTimezone=true&amp;serverTimezone=UTC" />

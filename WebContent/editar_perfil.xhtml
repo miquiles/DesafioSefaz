@@ -1,0 +1,236 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+     
+    <h:head>
+    <style>
+    
+.form-wrapper{
+
+width: 1200px;
+}
+
+h1{
+    font-family: sans-serif;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  background-color: white;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 32px;
+  letter-spacing: 1px;
+  margin: 20px 0;
+  color: white;
+  animation-duration: 800ms;
+  font-family: sans-serif;
+    animation-name: move;
+  
+}
+
+form {
+  margin: -36px ;
+  background-color: white;
+ 
+  border-radius: 5px;
+}
+
+form .input-block {
+  margin-bottom: 50px;
+}
+
+form .input-block label {
+  font-size: 14px;
+  color: darkslateblue;
+}
+
+form .input-block input {
+  width: 40%;
+  display: block;
+  margin-top: 8px;
+  padding: 7px;
+  font-size: 16px;
+  color: #7159c1;
+  border-radius: 2px;
+  border: 1px solid #ccddef;
+  outline-color: #7159c1;
+}
+
+form .ui-button-text{
+  display: block;
+  min-width: 209px;
+  border: none;
+  background-color: #7159c1;
+  color: white;
+    margin: auto;
+  padding: 7px;
+}
+
+
+
+
+.msg{
+
+margin-left: 950px;
+margin-top: 48px;
+height: 40px;
+
+    
+  }
+  
+.ui-messages-info{
+ 	 color: #f2f2f2;
+    background-color: #f32929;
+    border-color: #000000;
+}
+
+.input-block{
+
+    background-color: #f6fffb;
+    width: 100%;
+    padding: 30px;
+
+}
+
+.listaPessoas{
+background-color: white;
+margin-left: 600px;
+margin-top: -501px;
+margin-right: 20px;
+}
+.ui-datatable-tablewrapper{
+width: 548px;
+
+}
+
+</style>
+
+    
+    </h:head>
+ 
+    <h:body>
+     <ui:include src="/templates/sidebar.xhtml"> </ui:include>
+     
+       <div class="msg">
+       <p:messages id="messages" showDetail="true" closable="true">
+     			   <p:autoUpdate/>
+    			</p:messages>
+    			
+    			</div>
+       
+        <section class="form-section">
+    	<h1>Edite seus dados</h1>
+    	<p:outputLabel value="#{pessoab}"/>
+    	
+    	<div class="form-wrapper">
+    	 <h:form>
+    	 
+    	  
+        	<div class="input-block">
+        	
+        	
+        		<p:outputLabel value="ID"/>
+        		<h:inputText value="#{pessoabean.pessoa.id}"/>
+        		
+        		<p:outputLabel value="Nome"/>
+        		<h:inputText value="#{pessoabean.pessoa.nome}"/>
+        		<br/>
+        		<p:outputLabel value="Sobrenome"/>
+        		<h:inputText value="#{pessoabean.pessoa.sobrenome}"/>
+        		<br/>
+        		<p:outputLabel value="Email"/>
+        		<h:inputText value="#{pessoabean.pessoa.email}"/>
+        		<br/>
+        		<p:outputLabel value="CPF"/>
+        		<h:inputText value="#{pessoabean.pessoa.CPF}"/>
+        		<br/>
+        		<p:outputLabel value="Senha"/>
+        		<h:inputText value="#{pessoabean.pessoa.senha}"/>
+        		<br/>
+        		
+        		<p:commandButton value="Salvar" action="#{pessoabean.update}" update="@form"/>
+        		
+        		
+        		
+        		
+        		
+        		
+        		</div>
+        		
+        		
+        		
+        		<div class="listaPessoas">
+        		
+        		<p:dataTable value="#{pessoabean.testeListar}" var="pessoa">
+        			<p:column headerText="Id">
+        			<h:outputText value="#{pessoa.id}"/>
+        			
+        			</p:column>
+        			
+        			<p:column headerText="Nome">
+        			<h:outputText value="#{pessoa.nome}"/>
+        			
+        			</p:column>
+        			
+        			<p:column headerText="Sobrenome">
+        			<h:outputText value="#{pessoa.sobrenome}"/>
+        			
+        			</p:column>
+        			
+        			<p:column headerText="CPF">
+        			<h:outputText value="#{pessoa.CPF}"/>
+        			
+        			</p:column>
+        			
+        			
+        			<p:column headerText="Senha">
+        			<h:outputText value="#{pessoa.senha}"/>
+        			
+        			</p:column>
+        			
+        			
+        			
+        			<p:column headerText="Editar">
+        			<h:commandLink value="Editar">
+        			<f:setPropertyActionListener value="#{pessoa}" target="#{pessoabean.pessoa}">
+        			</f:setPropertyActionListener>
+        			</h:commandLink>
+        			</p:column>
+        		
+        		</p:dataTable>
+    			</div>
+        		
+        		
+        		
+        		
+        		
+    			  </h:form>
+        </div>
+        
+        </section>
+      
+    </h:body>
+</html>
