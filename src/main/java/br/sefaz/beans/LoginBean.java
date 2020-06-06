@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -51,8 +52,8 @@ public class LoginBean {
 					.getExternalContext().getSession(true);
 			sessao.setAttribute("usuarioLogado", usuarioLogado);
 			// testando o retorno 
-			System.out.println("Bem vindo "+ usuarioLogado);
 			return "/paginas/index.xhmtl?faces-redirect=true&amp;includeViewParams=true";
+			
 		}else {
 			
 			FacesContext.getCurrentInstance()
@@ -62,6 +63,7 @@ public class LoginBean {
 		
 		
 	}
+	
 	
 	
 	public String getTxtEmail() {

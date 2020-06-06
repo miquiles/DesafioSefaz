@@ -131,6 +131,16 @@ margin-left: 520px;
 }
 
 
+a {
+	text-decoration: none;
+	color: white;
+	size: 10px;
+	
+	font-size: 25px;
+	font-family: sans-serif;
+	
+}
+
 
 </style>
 
@@ -199,7 +209,11 @@ margin-left: 520px;
         		<h:commandButton value="Limpar campos" action="#{pessoabean.limparCampos}" update="@form"/>
         		
         		
-        		
+        		 <f:metadata>
+    	
+		    <f:viewAction action="#{pessoabean.atualizarUsuarioLogado}" />
+		</f:metadata>
+			
         		
         		
         		
@@ -274,6 +288,8 @@ margin-left: 520px;
         		
     			  </h:form>
         </div>
+        
+        
         
         </section>
       

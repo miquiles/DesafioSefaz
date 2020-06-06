@@ -75,13 +75,16 @@ h2 {
 
 .usuario{
 
-align-items: center;
+    align-items: center;
     align-items: center;
     /* padding: 87px; */
     margin-top: 85px;
     color: #d3d368;
     font-size: 17px;
     font-family: sans-serif;
+    border: solid;
+    border-color: #314f61;
+    border-radius: 20px;
 }
 
 .sair{
@@ -145,12 +148,20 @@ margin-left: 0px;
 							
 					
 				</ul>
-				 <f:metadata>
-    	
-		    <f:viewAction action="#{pessoabean.atualizarUsuarioLogado}" />
-		</f:metadata>
+			
 		
-		<div class="usuario">
+		
+			</nav>
+
+		</div>
+	
+	
+	
+
+
+
+
+<div class="usuario">
 		
 		<p:outputLabel style="color:white;"> Seja bem vindo </p:outputLabel>
 			<br/>
@@ -160,46 +171,30 @@ margin-left: 0px;
     	 <h:graphicImage class="img" value="/resources/img/man.png" />
     	
     	 </div>
+    	 
+    	 	 <f:metadata>
+    	
+		    <f:viewAction action="#{pessoabean.atualizarUsuarioLogado}" />
+		</f:metadata>
 			
 				<p:outputLabel style="color:white;">Usuário : </p:outputLabel>
-				<p:outputLabel value="#{pessoabean.usuarioLogado.nome}"></p:outputLabel>
+				<p:outputLabel value="#{pessoabean.usuarioLogado.nome}"/>
 		
-				<p:outputLabel value="#{pessoabean.usuarioLogado.sobrenome}"></p:outputLabel>
+				<p:outputLabel value="#{pessoabean.usuarioLogado.sobrenome}"/>
 			
 			<br/>
 			
 			<p:outputLabel style="color:white;">Email : </p:outputLabel>
-				<p:outputLabel value="#{pessoabean.usuarioLogado.email}"></p:outputLabel>
+				<p:outputLabel value="#{pessoabean.usuarioLogado.email}"/>
 			<br/>
 				
 				
 			
 			
 			<h:link>
-						<a class="sair" href="login.xhtml"> Sair </a>
+						<a class="sair" href="login.xhtml"> Sair</a>
 						</h:link>
 </div>
-			</nav>
-
-		</div>
-	</header>
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-	
-
-
-
+</header>
 </h:form>
-
-
 </html>

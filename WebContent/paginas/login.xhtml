@@ -53,10 +53,17 @@ form {
   background-color: white;
   padding: 30px 25px;
   border-radius: 5px;
+  box-shadow: 9px 7px 5px rgba(53, 33, 122, 0.97);
+}
+
+
+
+
+  
 }
 
 form .input-block {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 form .input-block label {
@@ -135,6 +142,9 @@ margin-left: 74px;
 
 }
 
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+color: white;
+}
 
 
 
@@ -150,7 +160,9 @@ margin-left: 74px;
 
 
 </style>
-
+<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+<h:outputStylesheet library="webjars" name="font-awesome/5.12.0/css/all.min-jsf.css" />
+<h:outputStylesheet library="webjars" name="font-awesome/5.12.0/css/v4-shims.min-jsf.css" />
     
     </h:head>
  
@@ -181,14 +193,18 @@ margin-left: 74px;
         		<div class="input-block">
         		<p:outputLabel value="Email"/>
         		<h:inputText value="#{loginbean.txtEmail}"/>
+        		<br/>
         		</div>
         	
         		<div class="input-block">
-        		<p:outputLabel value="Senha"/>
+        		<p:outputLabel value="Senha" icon="pi pi-lock"/>
         		<h:inputSecret value="#{loginbean.txtSenha}"/>
+        		<br/>
         		</div>
         		
-        		<p:commandButton value="Acessar"  action="#{loginbean.entrar}" update="@form"/>
+        		<p:commandButton value="Acessar"  action="#{loginbean.entrar}" update="@form" icon="pi pi-arrow-circle-right"/>
+        		
+      
         		
         		
         		
@@ -216,7 +232,7 @@ margin-left: 74px;
         
         </section>
         
-         
+       
       
     </h:body>
 </html>

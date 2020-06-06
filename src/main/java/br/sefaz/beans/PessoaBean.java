@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -27,7 +28,13 @@ public class PessoaBean {
 	List<Pessoa> testeListar = new ArrayList<Pessoa>();
 	
 	
-	private Pessoa usuarioLogado;
+		private Pessoa usuarioLogado;
+			
+		
+	
+	
+	
+	
 	
 	public void limparCampos() {
 		
@@ -59,15 +66,16 @@ public class PessoaBean {
 		
 	}
 	
-	public void atualizarUsuarioLogado() {
-		HttpSession sessao =  (HttpSession)FacesContext.getCurrentInstance()
+	public void atualizarUsuarioLogado(){
+		HttpSession sessao = (HttpSession)FacesContext.getCurrentInstance()
 				.getExternalContext().getSession(false);
-		this.setUsuarioLogado((Pessoa)sessao.getAttribute("usuarioLogado"));
+		this.usuarioLogado = (Pessoa)sessao.getAttribute("usuarioLogado");
+		
 	}
 	
 	public void salvar() {
 		
-		if (pessoa.getSobrenome().isEmpty() ||pessoa.getCPF().isEmpty() || pessoa.getNome().isEmpty() || pessoa.getEmail().isEmpty() || pessoa.getSenha().isEmpty()) {
+		if (pessoa.getSexo().isEmpty()||pessoa.getSobrenome().isEmpty() ||pessoa.getCPF().isEmpty() || pessoa.getNome().isEmpty() || pessoa.getEmail().isEmpty() || pessoa.getSenha().isEmpty()) {
 			FacesContext.getCurrentInstance()
 			.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Ops.", "Todos os campos devem ser preenchidos!!"));
 			
