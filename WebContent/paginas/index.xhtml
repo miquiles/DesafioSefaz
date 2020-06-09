@@ -19,20 +19,37 @@
 .conteudo {
 	margin-left: 366px;
 	width: 900px;
-	height: 500px;
-	margin-top: 60px;
-	background-color: white;
+	height: 603px;
+	margin-top: 19px;
+	background-color: #fafafa;
 	padding: 20px;
+	border-style: inset;
 }
 
-.input-block{
+.input-block {
+	font-family: sans-serif;
+}
 
-    font-family: sans-serif;
-   
+.novoUsuario {
+	inline-size: min-content;
+	height: 243px;
+}
 
+.p {
+	font-family: sans-serif;
+}
+
+.msg {
+	margin-left: 990;
+	margin-top: -19px;
 }
 </style>
-
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
+	<h:outputStylesheet library="webjars"
+		name="font-awesome/5.12.0/css/all.min-jsf.css" />
+	<h:outputStylesheet library="webjars"
+		name="font-awesome/5.12.0/css/v4-shims.min-jsf.css" />
 
 
 
@@ -41,52 +58,107 @@
 
 
 
-<h:form id="detalhes">
+<h:form>
+
+	<div class="descricao">
+		<h:graphicImage url="/resources/img/delete.png" width="25" height="25" />
+	</div>
+
+	<div class="msg">
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+
+	</div>
 
 	<div class="conteudo">
+
+
+		<div class="novoUsuario">
+
+
+
+
+
+			<p:inputText placeholder="Nome" value="#{pessoabean.pessoa.nome}"
+				style="width:170px" />
+			<p:inputText placeholder="Sobrenome"
+				value="#{pessoabean.pessoa.sobrenome}" style="width:170px" />
+			<p:inputText placeholder="Email" value="#{pessoabean.pessoa.email}"
+				style="width:170px" />
+			<p:inputText placeholder="CPF" value="#{pessoabean.pessoa.CPF}"
+				style="width:170px" />
+			<p:selectOneMenu id="sexo" value="#{pessoabean.pessoa.sexo}"
+				style="width:170px">
+				<f:selectItem itemLabel="Selecione o sexo...	" itemValue="" />
+				<f:selectItem itemLabel="Masculino" itemValue="masculino" />
+				<f:selectItem itemLabel="Feminino" itemValue="feminino" />
+				<f:selectItem itemLabel="Outros" itemValue="outros" />
+			</p:selectOneMenu>
+			<p:password placeholder="Senha" value="#{pessoabean.pessoa.senha}"
+				style="width:170px" />
+
+			<p:commandButton value="Adicionar" action="#{pessoabean.update}"
+				style="width:85px" update="@form" />
+			<p:commandButton value="Limpar" action="#{pessoabean.limparCampos}"
+				update="@form" />
+
+
+
+
+		</div>
+
+		<div class="pesquisar">
+
+			<p:inputText placeholder="Por nome" />
+			<p:commandButton value="Pesquisar" update="@form" />
+
+
+		</div>
 		<f:metadata>
 
 			<f:viewAction action="#{pessoabean.atualizarUsuarioLogado}" />
 		</f:metadata>
 
-		<p:dataTable value="#{pessoabean.testeListar}" var="p">
-
-			<p:column headerText="Id">
+		<p:dataTable value="#{pessoabean.testeListar}" var="p"
+			scrollable="true" scrollHeight="250">
+			<p:column headerText="Id" footerText="Id">
 
 				<h:outputText value="#{p.id}" />
 
 			</p:column>
 
-			<p:column headerText="Nome">
+
+			<p:column headerText="Nome" footerText="Nome">
 
 				<h:outputText value="#{p.nome}" />
 
 			</p:column>
 
-			<p:column headerText="Sobrenome">
+			<p:column headerText="Sobrenome" footerText="Sobrenome">
 
 				<h:outputText value="#{p.sobrenome}" />
 
 			</p:column>
 
-			<p:column headerText="CPF">
+			<p:column headerText="CPF" footerText="CPF">
 
 				<h:outputText value="#{p.CPF}" />
 
 			</p:column>
-			<p:column headerText="Email">
+			<p:column headerText="Email" footerText="Email">
 
 				<h:outputText value="#{p.email}" />
 
 			</p:column>
 
-			<p:column headerText="Sexo">
+			<p:column headerText="Sexo" footerText="Sexo">
 				<h:outputText value="#{p.sexo}" />
 
 			</p:column>
 
 
-			<p:column headerText="Senha">
+			<p:column headerText="Senha" footerText="Senha">
 
 				<h:outputText value="#{p.senha}" />
 
@@ -95,18 +167,43 @@
 
 
 
-			<p:column headerText="Editar">
+			<p:column headerText="Editar" footerText="Editar" style="color:blue;">
 
-				<p:commandButton value="Editar" oncomplete="PF('formPessoa').show()"> 
+				<h:commandLink update="@form">
+					<h:graphicImage url="/resources/img/editar.png" width="25"
+						height="25" />
 					<f:setPropertyActionListener value="#{p}"
 						target="#{pessoabean.pessoa}">
 					</f:setPropertyActionListener>
-				</p:commandButton>
+				</h:commandLink>
+			</p:column>
+
+			<p:column headerText="Deletar" footerText="Deletar"
+				style="color:blue;">
+
+				<h:commandLink update="@form" action="#{pessoabean.remover}">
+					<h:graphicImage url="/resources/img/delete.png" width="25"
+						height="25" />
+					<f:setPropertyActionListener value="#{p}"
+						target="#{pessoabean.pessoa}">
+					</f:setPropertyActionListener>
+				</h:commandLink>
+			</p:column>
+
+			<p:column headerText="Contatos" footerText="Contatos"
+				style="color:blue;">
+
+				<h:commandLink update="@form">
+					<h:graphicImage url="/resources/img/phone.png" width="35"
+						height="25" />
+					<f:param name="codigoPessoa" value="pessoa.id"/>
+				</h:commandLink>
 			</p:column>
 
 
 
 		</p:dataTable>
+
 
 
 	</div>
@@ -115,54 +212,5 @@
 
 
 </h:form>
-		
-		<div class="input-block">
-
-			<p:dialog header="Editar Pessoas" footer="Todos os campos devem ser preenchidos" modal="true" height="400" width="400" widgetVar="formPessoa">
-				<h:form>
-					<h:panelGrid columns="2">
-						<p:outputLabel value="Nome"/>
-						<h:inputText value="#{pessoabean.pessoa.nome}"/>
-						<p:outputLabel value="Sobrenome"/>
-						<h:inputText value="#{pessoabean.pessoa.sobrenome}"/>
-						<p:outputLabel value="Email"/>
-						<h:inputText value="#{pessoabean.pessoa.email}"/>
-						<p:outputLabel value="CPF"/>
-						<h:inputText value="#{pessoabean.pessoa.CPF}"/>
-						<p:outputLabel value="Sexo"/>
-						<p:selectOneMenu id="sexo" value="#{pessoabean.pessoa.sexo}" style="width:170px">
-            <f:selectItem itemLabel="Sexo" itemValue="" />
-            <f:selectItem itemLabel="Masculino" itemValue="masculino" />
-            <f:selectItem itemLabel="Feminino" itemValue="feminino" />
-            <f:selectItem itemLabel="Outros" itemValue="outros" />
-            </p:selectOneMenu>
-            			<p:outputLabel value="Senha"/>
-						<h:inputText value="#{pessoabean.pessoa.senha}"/>
-						
-						<p:commandButton value="Salvar" action="#{pessoabean.update}" update=":detalhes"/>
-						 <p:messages id="messages" showDetail="true" closable="true">
-     			   		<p:autoUpdate/>
-    					</p:messages>
-        				
-						<p:commandButton value="Remover" id="btnRemover" action="#{pessoabean.remover}" update=":detalhes"/>
-						
-						
-					
-						
-						
-						
-						
-											
-					
-					</h:panelGrid>
-				
-				
-				</h:form>
-
-			</p:dialog>
-</div>
-
-
-
 
 </html>

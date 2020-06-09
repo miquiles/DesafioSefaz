@@ -11,6 +11,9 @@ import br.sefaz.conexao.JPAUtil;
 public class PessoaDao {
 	
 	
+
+	
+	
 	public void removerPeloID (Pessoa pessoa) {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();

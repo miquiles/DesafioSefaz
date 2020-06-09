@@ -25,6 +25,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: monospace;
 }
 
 header {
@@ -88,7 +89,11 @@ h2 {
 }
 
 .sair{
-color: white;
+color: #cccaca;
+font-size: 15px;
+}
+.trocarSenha{
+color: #cccaca;
 font-size: 15px;
 }
 .img{
@@ -184,11 +189,14 @@ margin-left: 0px;
 			<br/>
 				
 				
-			
+			<h:link>
+						<a class="trocarSenha" href="login.xhtml">Meu perfil</a>
+						</h:link>
 			
 			<h:link>
 						<a class="sair" href="login.xhtml"> Sair</a>
 						</h:link>
+						
 </div>
 </header>
 </h:form>

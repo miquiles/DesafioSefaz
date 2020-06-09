@@ -40,6 +40,9 @@ public class PessoaBean {
 		
 		pessoa = new Pessoa();
 	}
+	
+	
+	
 			
 	public void remover() {
 		
