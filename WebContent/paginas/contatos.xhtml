@@ -10,9 +10,10 @@
     </h:head>
  
     <h:body> 
-    
+    <p:dialog visible="false" modal="true" widgetVar="contatos">   
     <h:form>
     
+		  
        <div class="msg">
        <p:messages id="messages" showDetail="true" closable="true">
      			   <p:autoUpdate/>
@@ -27,5 +28,6 @@
     			<p:commandButton value="Salvar" update="@form" action="#{contatobean.salvarContato}"/>
   
       </h:form>
+      </p:dialog>
     </h:body>
 </html>

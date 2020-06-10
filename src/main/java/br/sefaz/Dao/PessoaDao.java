@@ -98,6 +98,18 @@ public class PessoaDao {
 
 	}
 	
+	public List<Pessoa> listarCPF(Pessoa pessoa) {
+
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		
+		javax.persistence.Query query = entityManager.createQuery("from pessoa where cpf =" + pessoa.getId());
+
+		List<Pessoa> id = query.getResultList();
+
+		return id;
+
+	}
+	
 	
 	
 		

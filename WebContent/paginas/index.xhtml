@@ -12,6 +12,14 @@
 	<ui:include src="/template/principal.xhtml" />
 
 	<style>
+.index{
+	
+	
+	color:#7159c1;
+	
+	
+}	
+	
 h1{
     font-family: sans-serif;
 }	
@@ -208,8 +216,8 @@ h1{
 			<p:column headerText="Contatos" footerText="Contatos"
 				style="color:blue;">
 
-				<h:commandLink update="@form">
-					<h:graphicImage url="/resources/img/phone.png" width="35"
+				<h:commandLink update="@form" >
+					<h:graphicImage url="/resources/img/whatsapp-logo-1.png" width="35" 
 						height="25" />
 					<f:param name="codigoPessoa" value="pessoa.id" />
 				</h:commandLink>

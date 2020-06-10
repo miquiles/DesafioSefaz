@@ -24,7 +24,7 @@ public class PessoaBean {
 	
 	List<Pessoa> listarTodos = new ArrayList<Pessoa>();
 	List<Pessoa> listarUsuarios = new ArrayList<Pessoa>();
-	
+	List<Pessoa> listarUser = new ArrayList<Pessoa>();
 	List<Pessoa> testeListar = new ArrayList<Pessoa>();
 	
 	
@@ -32,7 +32,11 @@ public class PessoaBean {
 			
 		
 	
-	
+	public void listarUser() {
+		
+		listarUser = pessoaDao.listarCPF(pessoa);
+		
+	}
 	
 	
 	
@@ -193,6 +197,18 @@ public class PessoaBean {
 
 	public void setTesteListar(List<Pessoa> testeListar) {
 		this.testeListar = testeListar;
+	}
+
+
+
+	public List<Pessoa> getListarUser() {
+		return listarUser;
+	}
+
+
+
+	public void setListarUser(List<Pessoa> listarUser) {
+		this.listarUser = listarUser;
 	}
 
 

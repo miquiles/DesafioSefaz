@@ -12,6 +12,13 @@
 	<ui:include src="/template/principal.xhtml" />
 
 	<style>
+.suporte{
+	
+	
+	color: #7159c1;
+	
+	
+}	
 
 
 .conteudo {
@@ -19,9 +26,38 @@
 	width: 900px;
 	height: 500px;
 	margin-top: 60px;
-	background-color: white;
+	background-color: #f2f2f2;
 	padding: 20px;
+	border-radius: 50px;
 }
+
+.avatar{
+margin-left: 288px;
+
+}
+.linkedin{
+margin-left: 288px;
+margin-bottom: 6px
+
+}
+.whats{
+margin-left: 288px;
+margin-bottom: 6px
+
+}
+.git{
+margin-left: 288px;
+
+}
+
+
+
+.conteudo a{
+    margin-left: 0px;
+        font-size: 16px;
+}
+
+
 
 </style>
 
@@ -41,8 +77,50 @@
 			<f:viewAction action="#{pessoabean.atualizarUsuarioLogado}" />
 		</f:metadata>
 
+		<div class="sobre">
+		
+		<div class="avatar">
+		<h:graphicImage value="/resources/img/eu.png"  width="270" height="160"/>
+		
+		
+		</div>
+		<h1 style="color:blue; text-align: center;">Pedro Miquiles</h1>
+		<h1 style="font-size:16px; text-align: center;"> Desenvolvedor</h1>
+		</div>
 	
-
+		<div class="sobre">
+		
+		<div class="linkedin">
+		<h:graphicImage value="/resources/img/linkedIn.png"  width="80" height="80"/>
+		<h:link ><a onclick="window.open('https://www.linkedin.com/in/pedromiquiles','_blank')" style="color: blue; "> linkedin/pedromiquiles </a></h:link>
+		
+		</div>
+		
+		
+		</div>
+		
+		
+		<div class="sobre">
+		
+		<div class="whats">
+		<h:graphicImage value="/resources/img/whatsapp-logo-1.png"  width="65" height="60"/>
+		<h:link ><a onclick="window.open('https://api.whatsapp.com/send?phone=5581998042096','_blank')" style="color: blue; "> (81) 99804-2096 </a></h:link>
+		</div>
+		
+	
+		</div>
+		
+			<div class="sobre">
+		
+		<div class="git">
+		<h:graphicImage value="/resources/img/cat.png"  width="70" height="70"/>
+		<h:link ><a onclick="window.open('https://github.com/miquiles','_blank')" style="color: blue; "> github.com/miquiles </a></h:link>
+	
+		
+		
+		</div>
+		
+		</div>
 			
 
 	</div>
