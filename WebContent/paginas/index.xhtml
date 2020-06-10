@@ -12,6 +12,10 @@
 	<ui:include src="/template/principal.xhtml" />
 
 	<style>
+h1{
+    font-family: sans-serif;
+}	
+	
 .ui-datatable-tablewrapper {
 	border-style: outset;
 }
@@ -19,7 +23,7 @@
 .conteudo {
 	margin-left: 366px;
 	width: 900px;
-	height: 603px;
+	height: 584px;
 	margin-top: 19px;
 	background-color: #fafafa;
 	padding: 20px;
@@ -32,7 +36,8 @@
 
 .novoUsuario {
 	inline-size: min-content;
-	height: 243px;
+	height: 349px;
+	font-family: Roboto, Arial, sans-serif;
 }
 
 .p {
@@ -43,6 +48,11 @@
 	margin-left: 990;
 	margin-top: -19px;
 }
+
+
+
+
+
 </style>
 	<h:outputStylesheet name="primeicons/primeicons.css"
 		library="primefaces" />
@@ -79,15 +89,19 @@
 
 
 
-
-			<p:inputText placeholder="Nome" value="#{pessoabean.pessoa.nome}"
+			<p:outputLabel value="Nome" />
+			<p:inputText  value="#{pessoabean.pessoa.nome}"
 				style="width:170px" />
-			<p:inputText placeholder="Sobrenome"
-				value="#{pessoabean.pessoa.sobrenome}" style="width:170px" />
-			<p:inputText placeholder="Email" value="#{pessoabean.pessoa.email}"
+			<p:outputLabel value="Sobenome" />
+			<p:inputText value="#{pessoabean.pessoa.sobrenome}"
 				style="width:170px" />
-			<p:inputText placeholder="CPF" value="#{pessoabean.pessoa.CPF}"
+			<p:outputLabel value="Email" />
+			<p:inputText  value="#{pessoabean.pessoa.email}"
 				style="width:170px" />
+			<p:outputLabel value="CPF" />
+			<p:inputText  value="#{pessoabean.pessoa.CPF}"
+				style="width:170px" />
+			<p:outputLabel value="Sexo" />
 			<p:selectOneMenu id="sexo" value="#{pessoabean.pessoa.sexo}"
 				style="width:170px">
 				<f:selectItem itemLabel="Selecione o sexo...	" itemValue="" />
@@ -95,6 +109,7 @@
 				<f:selectItem itemLabel="Feminino" itemValue="feminino" />
 				<f:selectItem itemLabel="Outros" itemValue="outros" />
 			</p:selectOneMenu>
+			<p:outputLabel value="Senha" />
 			<p:password placeholder="Senha" value="#{pessoabean.pessoa.senha}"
 				style="width:170px" />
 
@@ -121,7 +136,7 @@
 		</f:metadata>
 
 		<p:dataTable value="#{pessoabean.testeListar}" var="p"
-			scrollable="true" scrollHeight="250">
+			scrollable="true" scrollHeight="100">
 			<p:column headerText="Id" footerText="Id">
 
 				<h:outputText value="#{p.id}" />
@@ -196,7 +211,7 @@
 				<h:commandLink update="@form">
 					<h:graphicImage url="/resources/img/phone.png" width="35"
 						height="25" />
-					<f:param name="codigoPessoa" value="pessoa.id"/>
+					<f:param name="codigoPessoa" value="pessoa.id" />
 				</h:commandLink>
 			</p:column>
 
