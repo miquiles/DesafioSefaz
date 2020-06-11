@@ -22,7 +22,10 @@
 	
 h1{
     font-family: sans-serif;
+font-size: 20px;    
 }	
+
+
 	
 .ui-datatable-tablewrapper {
 	border-style: outset;
@@ -133,8 +136,9 @@ h1{
 
 		<div class="pesquisar">
 
-			<p:inputText placeholder="Por nome" />
-			<p:commandButton value="Pesquisar" update="@form" />
+			<p:inputText placeholder="Por Id" value="#{pessoabean.pessoa.id}"/>
+			<p:commandButton value="Pesquisar" action="#{pessoabean.pesquisarId}" target="#{pessoabean.pessoa}" update=":resultPesquisa" 
+			oncomplete="PF('dialogPesquisar').show();"/>
 
 
 		</div>
@@ -142,8 +146,10 @@ h1{
 
 			<f:viewAction action="#{pessoabean.atualizarUsuarioLogado}" />
 		</f:metadata>
+		
+		<h1>Lista de todos os usuários</h1>
 
-		<p:dataTable value="#{pessoabean.testeListar}" var="p"
+		<p:dataTable border="2" value="#{pessoabean.testeListar}" var="p"
 			scrollable="true" scrollHeight="100">
 			<p:column headerText="Id" footerText="Id">
 
@@ -216,24 +222,121 @@ h1{
 			<p:column headerText="Contatos" footerText="Contatos"
 				style="color:blue;">
 
-				<h:commandLink update="@form" >
+				<h:commandLink update="@form"  action="/paginas/contato.xhtml">
 					<h:graphicImage url="/resources/img/whatsapp-logo-1.png" width="35" 
 						height="25" />
-					<f:param name="codigoPessoa" value="pessoa.id" />
+					<f:param name="codigoUser" value="pessoa.id" />
 				</h:commandLink>
 			</p:column>
 
 
 
 		</p:dataTable>
+		
+		
+		
+		
+		
+		
 
 
 
 	</div>
-
-
+	
+	
+	
 
 
 </h:form>
 
+
+<p:dialog modal="true" widgetVar="dialogPesquisar" rendered="true" width="600" height="200" header="Resultado da Pesquisa" footer="Pesquisa por ID">
+<h:form id="resultPesquisa">
+
+<p:dataTable value="#{pessoabean.usuarioPesquisa}" var="p"
+			scrollable="true" scrollHeight="100">
+			<p:column headerText="Id" footerText="Id">
+
+				<h:outputText value="#{p.id}" />
+
+			</p:column>
+
+
+			<p:column headerText="Nome" footerText="Nome">
+
+				<h:outputText value="#{p.nome}" />
+
+			</p:column>
+
+			<p:column headerText="Sobrenome" footerText="Sobrenome">
+
+				<h:outputText value="#{p.sobrenome}" />
+
+			</p:column>
+
+			<p:column headerText="CPF" footerText="CPF">
+
+				<h:outputText value="#{p.CPF}" />
+
+			</p:column>
+			<p:column headerText="Email" footerText="Email">
+
+				<h:outputText value="#{p.email}" />
+
+			</p:column>
+
+			<p:column headerText="Sexo" footerText="Sexo">
+				<h:outputText value="#{p.sexo}" />
+
+			</p:column>
+
+
+			<p:column headerText="Senha" footerText="Senha">
+
+				<h:outputText value="#{p.senha}" />
+
+			</p:column>
+
+
+
+
+			<p:column headerText="Editar" footerText="Editar" style="color:blue;">
+
+				<h:commandLink update="@form">
+					<h:graphicImage url="/resources/img/editar.png" width="25"
+						height="25" />
+					<f:setPropertyActionListener value="#{p}"
+						target="#{pessoabean.pessoa}">
+					</f:setPropertyActionListener>
+				</h:commandLink>
+			</p:column>
+
+			<p:column headerText="Deletar" footerText="Deletar"
+				style="color:blue;">
+
+				<h:commandLink update="@form" action="#{pessoabean.remover}">
+					<h:graphicImage url="/resources/img/delete.png" width="25"
+						height="25" />
+					<f:setPropertyActionListener value="#{p}"
+						target="#{pessoabean.pessoa}">
+					</f:setPropertyActionListener>
+				</h:commandLink>
+			</p:column>
+
+			<p:column headerText="Contatos" footerText="Contatos"
+				style="color:blue;">
+
+				<h:commandLink update="@form"  action="/paginas/contato.xhtml">
+					<h:graphicImage url="/resources/img/whatsapp-logo-1.png" width="35" 
+						height="25" />
+					<f:param name="codigoUser" value="pessoa.id" />
+				</h:commandLink>
+			</p:column>
+
+
+
+		</p:dataTable>
+		</h:form>
+		
+</p:dialog>
 </html>

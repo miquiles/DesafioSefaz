@@ -5,16 +5,11 @@
     xmlns:ui="http://java.sun.com/jsf/facelets">
      
     <h:head>
+    <ui:include src="/template/principal.xhtml" />
     <style>
     
-.form-wrapper{
 
-width: 900px;
-}
 
-h1{
-    font-family: sans-serif;
-}
 
 
 * {
@@ -23,71 +18,21 @@ h1{
   padding: 0;
 }
 
-html,
-body {
-  height: 100vh;
+
+
+
+
+.conteudo {
+	margin-left: 366px;
+	width: 900px;
+	height: 500px;
+	margin-top: 60px;
+	background-color: #f2f2f2;
+	padding: 20px;
+	border-radius: 50px;
 }
 
-body {
-  background-color: white;
-  font-family: Roboto, Arial, sans-serif;
-}
 
-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-h1 {
-  font-size: 32px;
-  letter-spacing: 1px;
-  margin: 20px 0;
-  color: white;
-  animation-duration: 800ms;
-  font-family: sans-serif;
-    animation-name: move;
-  
-}
-
-form {
-  margin: -36px ;
-  background-color: white;
- 
-  border-radius: 5px;
-}
-
-form .input-block {
-  margin-bottom: 50px;
-}
-
-form .input-block label {
-  font-size: 14px;
-  color: darkslateblue;
-}
-
-form .input-block input {
-  width: 40%;
-  display: block;
-  margin-top: 8px;
-  padding: 7px;
-  font-size: 16px;
-  color: #7159c1;
-  border-radius: 2px;
-  border: 1px solid #ccddef;
-  outline-color: #7159c1;
-}
-
-form .ui-button-text{
-  display: block;
-  min-width: 209px;
-  border: none;
-  background-color: #7159c1;
-  color: white;
-    margin: auto;
-  padding: 7px;
-}
 
 
 
@@ -107,7 +52,7 @@ height: 40px;
     border-color: #000000;
 }
 
-.input-block{
+.contato{
 
     background-color: #f6fffb;
     width: 100%;
@@ -122,25 +67,18 @@ height: 40px;
     </h:head>
  
     <h:body>
-     <ui:include src="/templates/sidebar.xhtml"> </ui:include>
-     
+    <h:form>
+    
        <div class="msg">
        <p:messages id="messages" showDetail="true" closable="true">
      			   <p:autoUpdate/>
     			</p:messages>
     			
     			</div>
-       
-        <section class="form-section">
-    	<h1>Cadastre seu contato de telefone</h1>
-    	
-    	
-    	<div class="form-wrapper">
-    	 <h:form>
-    	 
-    	  
-        	<div class="input-block">
-        
+    			<div class="conteudo">
+       <div class="contato">
+	
+		
         <h:column>
         		<p:selectOneMenu id="tipo" style="width:100px" dir="rtl">
            			 <f:selectItem itemLabel="Tipo" itemValue="" />
@@ -162,18 +100,17 @@ height: 40px;
        			 
         		<br/>
         		<p:outputLabel value="Numero"/>
-        		<p:inputText placeholder="9999-9999" maxlength="10"/>
+        		<p:inputText/>
         		<br/>
         		<br/>
-        		<p:commandButton value="Salvar Contato"/>
+        		<p:commandButton value="Salvar Contato" action="#{contatobean.salvarContato}"/>
         		
         		</h:column>
+        	
+        		
     			</div>
     			
-    			  </h:form>
-        </div>
-        
-        </section>
-      
+	</div>
+      </h:form>
     </h:body>
 </html>

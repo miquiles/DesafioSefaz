@@ -26,15 +26,48 @@ public class PessoaBean {
 	List<Pessoa> listarUsuarios = new ArrayList<Pessoa>();
 	List<Pessoa> listarUser = new ArrayList<Pessoa>();
 	List<Pessoa> testeListar = new ArrayList<Pessoa>();
+	List<Pessoa> usuarioPesquisa = new ArrayList<Pessoa>();
 	
 	
-		private Pessoa usuarioLogado;
+		public List<Pessoa> getUsuarioPesquisa() {
+			usuarioPesquisa = pessoaDao.pesquisarId(pessoa);
+			return usuarioPesquisa;
+	}
+
+
+
+
+
+	public void setUsuarioPesquisa(List<Pessoa> usuarioPesquisa) {
+		this.usuarioPesquisa = usuarioPesquisa;
+	}
+	
+	// Quando a tela for carregada será caregado a lista de pessoas no datagrid.
+		public List<Pessoa> getTesteListar() {
 			
+			testeListar = pessoaDao.listarTodos();
+			return testeListar;
+		}
+
+		public void setTesteListar(List<Pessoa> testeListar) {
+			this.testeListar = testeListar;
+		}
+
+
+
+
+
+		private Pessoa usuarioLogado;
 		
 	
-	public void listarUser() {
+			
+	
+	 
 		
-		listarUser = pessoaDao.listarCPF(pessoa);
+	
+	public void pesquisarId() {
+		
+		listarUser = pessoaDao.pesquisarId(pessoa);
 		
 	}
 	
@@ -188,18 +221,8 @@ public class PessoaBean {
 	public void setUsuarioLogado(Pessoa usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
 	}
-
-	public List<Pessoa> getTesteListar() {
-		
-		testeListar = pessoaDao.listarTodos();
-		return testeListar;
-	}
-
-	public void setTesteListar(List<Pessoa> testeListar) {
-		this.testeListar = testeListar;
-	}
-
-
+	
+	
 
 	public List<Pessoa> getListarUser() {
 		return listarUser;

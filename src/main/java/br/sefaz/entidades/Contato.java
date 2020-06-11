@@ -12,7 +12,7 @@ public class Contato {
 		
 		@Id
 		@Column(name = "id")
-		@GeneratedValue(strategy = GenerationType.AUTO)
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		public Long id;
 		
 		@Column(name = "ddd", nullable = false )

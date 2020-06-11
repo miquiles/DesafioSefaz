@@ -25,6 +25,8 @@ public class LoginBean {
 	private PessoaDao pessoaDao = new PessoaDao();
 	
 	
+	
+	
 	//construtor
 	public LoginBean() {
 		this.listarPessoas = new ArrayList<Pessoa>();
@@ -110,6 +112,7 @@ public class LoginBean {
 	}
 
 
-	
+
+
 
 }
