@@ -1,4 +1,4 @@
-package projetoweb;
+package br.sefaz.testes;
 
 import java.sql.SQLException;
 
@@ -7,7 +7,7 @@ import org.junit.Test;
 import br.sefaz.Dao.PessoaDao;
 import br.sefaz.entidades.Pessoa;
 
-public class test {
+public class PessoaTeste {
 
 		@Test
 		public void init() throws SQLException {

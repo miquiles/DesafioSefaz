@@ -114,6 +114,20 @@ public class PessoaDao {
 
 	}
 	
+	public Long pesquisarCodigo(Long id) {
+
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		
+		javax.persistence.Query query = entityManager.createQuery("from pessoa where id =" + id);
+
+		
+		
+		return id;
+		
+
+	}
+	
+	
 	
 	
 		

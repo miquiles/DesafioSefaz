@@ -1,10 +1,11 @@
 package br.sefaz.beans;
 
 
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 
 import br.sefaz.Dao.ContatoDao;
 import br.sefaz.Dao.PessoaDao;
@@ -12,7 +13,7 @@ import br.sefaz.entidades.Contato;
 import br.sefaz.entidades.Pessoa;
 
 
-@SessionScoped
+@ViewScoped
 @ManagedBean(name = "contatobean")
 public class ContatoBean {
 	
@@ -21,10 +22,19 @@ public class ContatoBean {
 	private PessoaDao pessoaDao = new PessoaDao();
 	private Pessoa user = new Pessoa();
 	
+	//será chamado quando o manegedbean for carregado na tela
+	@PostConstruct
+	public void init() {
+		String coduser = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("codigoUser");
+		//verificando se o codigo foi capturado.
+		System.out.println("cogido da pessoa"+coduser);
+		
+	}
 	
 	
 	public String salvarContato() {
 		this.contato = contatoDao.salvarContato(contato);
+		contato = new Contato();
 		return "";
 	}
 

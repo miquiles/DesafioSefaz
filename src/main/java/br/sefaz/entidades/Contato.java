@@ -2,17 +2,20 @@ package br.sefaz.entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Entity(name = "contato")
 public class Contato {
 		
 		@Id
+		@GeneratedValue(strategy = GenerationType.AUTO)
 		@Column(name = "id")
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		public Long id;
 		
 		@Column(name = "ddd", nullable = false )
@@ -24,6 +27,9 @@ public class Contato {
 		@Column(name = "numero", nullable = false)
 		public String numero;
 		
+		@ManyToOne(optional = false, fetch = FetchType.EAGER)
+		@JoinColumn(name = "id_pessoa")
+		private Pessoa pessoa;
 		
 		public Long getId() {
 			return id;
@@ -48,6 +54,12 @@ public class Contato {
 		}
 		public void setNumero(String numero) {
 			this.numero = numero;
+		}
+		public Pessoa getPessoa() {
+			return pessoa;
+		}
+		public void setPessoa(Pessoa pessoa) {
+			this.pessoa = pessoa;
 		}
 		
 		

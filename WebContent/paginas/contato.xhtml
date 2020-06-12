@@ -1,26 +1,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
-     
-    <h:head>
-    <ui:include src="/template/principal.xhtml" />
-    <style>
-    
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-
-
-
+<h:head>
+	<ui:include src="/template/principal.xhtml" />
+	<style>
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
-
-
-
-
 
 .conteudo {
 	margin-left: 366px;
@@ -32,85 +23,81 @@
 	border-radius: 50px;
 }
 
-
-
-
-
-
-.msg{
-
-margin-left: 950px;
-margin-top: 48px;
-height: 40px;
-
-    
-  }
-  
-.ui-messages-info{
- 	 color: #f2f2f2;
-    background-color: #f32929;
-    border-color: #000000;
+.msg {
+	margin-left: 950px;
+	margin-top: 48px;
+	height: 40px;
 }
 
-.contato{
-
-    background-color: #f6fffb;
-    width: 100%;
-    padding: 30px;
-
+.ui-messages-info {
+	color: #f2f2f2;
+	background-color: #f32929;
+	border-color: #000000;
 }
 
-
+.contato {
+	background-color: #f6fffb;
+	width: 100%;
+	padding: 30px;
+}
 </style>
 
-    
-    </h:head>
- 
-    <h:body>
-    <h:form>
-    
-       <div class="msg">
-       <p:messages id="messages" showDetail="true" closable="true">
-     			   <p:autoUpdate/>
-    			</p:messages>
-    			
-    			</div>
-    			<div class="conteudo">
-       <div class="contato">
-	
-		
-        <h:column>
-        		<p:selectOneMenu id="tipo" style="width:100px" dir="rtl">
-           			 <f:selectItem itemLabel="Tipo" itemValue="" />
-           			 <f:selectItem itemLabel="Celular" itemValue="Celular" />
-           			 <f:selectItem itemLabel="Empresarial" itemValue="Empresarial" />
-           			 <f:selectItem itemLabel="Fixo" itemValue="Fixo" />
-           			 
-          			  
-          			  </p:selectOneMenu>
-        		
-        		<p:selectOneMenu id="ddd" style="width:100px" dir="rtl">
-           			 <f:selectItem itemLabel="DDD" itemValue="" />
-           			 <f:selectItem itemLabel="81" itemValue="81" />
-           			 <f:selectItem itemLabel="85" itemValue="85" />
-           			 <f:selectItem itemLabel="11" itemValue="11" />
-           			 <f:selectItem itemLabel="21" itemValue="21" />
-          			  
-          			  </p:selectOneMenu>
-       			 
-        		<br/>
-        		<p:outputLabel value="Numero"/>
-        		<p:inputText/>
-        		<br/>
-        		<br/>
-        		<p:commandButton value="Salvar Contato" action="#{contatobean.salvarContato}"/>
-        		
-        		</h:column>
-        	
-        		
-    			</div>
-    			
-	</div>
-      </h:form>
-    </h:body>
+
+</h:head>
+
+<h:body>
+	<h:form>
+
+		<div class="msg">
+			<p:messages id="messages" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
+
+		</div>
+		<div class="conteudo">
+			<div class="contato">
+				
+				<h:outputText />
+				
+				
+		<p:outputLabel value="#{contatobean.user.nome}"/>
+						
+						
+				<h:column>
+					<p:selectOneMenu id="tipo" style="width:100px" dir="rtl"
+						value="#{contatobean.contato.tipo}">
+						<f:selectItem itemLabel="Tipo" itemValue="" />
+						<f:selectItem itemLabel="Celular" itemValue="Celular" />
+						<f:selectItem itemLabel="Empresarial" itemValue="Empresarial" />
+						<f:selectItem itemLabel="Fixo" itemValue="Fixo" />
+
+
+					</p:selectOneMenu>
+
+					<p:selectOneMenu id="ddd" style="width:100px" dir="rtl"
+						value="#{contatobean.contato.ddd}">
+						<f:selectItem itemLabel="DDD" itemValue="" />
+						<f:selectItem itemLabel="81" itemValue="81" />
+						<f:selectItem itemLabel="85" itemValue="85" />
+						<f:selectItem itemLabel="11" itemValue="11" />
+						<f:selectItem itemLabel="21" itemValue="21" />
+
+					</p:selectOneMenu>
+
+					<br />
+					<p:outputLabel value="Numero" />
+					<p:inputText value="#{contatobean.contato.numero}" />
+					<br />
+					<br />
+					<p:commandButton value="Salvar Contato"
+						action="#{contatobean.salvarContato}" />
+
+				</h:column>
+
+
+			</div>
+
+		</div>
+	</h:form>
+</h:body>
 </html>

@@ -1,6 +1,8 @@
 package br.sefaz.entidades;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -36,10 +38,16 @@ public class Pessoa {
 	@Column(name = "sexo", nullable = false)
 	private String sexo;
 	
+	@OneToMany(mappedBy = "pessoa")
+	private List<Contato> contato;
 	
 	
-	
-	
+	public List<Contato> getContato() {
+		return contato;
+	}
+	public void setContato(List<Contato> contato) {
+		this.contato = contato;
+	}
 	public Long getId() {
 		return id;
 	}

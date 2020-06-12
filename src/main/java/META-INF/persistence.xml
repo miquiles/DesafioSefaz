@@ -7,16 +7,16 @@
    
    <class>br.sefaz.entidades.Pessoa</class>
    <class>br.sefaz.entidades.Contato</class>
+  
+   
    
    
 
    
-  
-   
        <properties>
        
-           <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/dbsefaz01?useTimezone=true&amp;serverTimezone=UTC" />
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+           <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/dbsefaz01?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=UTC"/>
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
 			
            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
            
@@ -28,7 +28,9 @@
            
            <property name="hibernate.format_sql" value="true"/>
            <property name="hibernate.show_sql" value="true"/>
-
+           
+          
        </properties>
+     
    </persistence-unit>
 </persistence>
