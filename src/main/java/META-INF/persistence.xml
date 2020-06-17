@@ -3,10 +3,10 @@
             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
 
 
-   <persistence-unit name="dbsefaz01" transaction-type="RESOURCE_LOCAL">
+   <persistence-unit name="BVR-PU" transaction-type="RESOURCE_LOCAL">
    
-   <class>br.sefaz.entidades.Pessoa</class>
-   <class>br.sefaz.entidades.Contato</class>
+   <class>br.bvr.entidades.Pessoa</class>
+   <class>br.bvr.entidades.Contato</class>
   
    
    
@@ -14,23 +14,16 @@
 
    
        <properties>
-       
-           <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/dbsefaz01?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=UTC"/>
-			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-			
-           <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-           
-           <property name="hibernate.connection.show_sql" value="true" />
-           <property name="hibernate.hbm2ddl.auto" value="update"/>
-           
-           <property name="javax.persistence.jdbc.user" value="root"/>
-           <property name="javax.persistence.jdbc.password" value="12345"/>
-           
-           <property name="hibernate.format_sql" value="true"/>
-           <property name="hibernate.show_sql" value="true"/>
-           
-          
-       </properties>
+			<!-- Dados de conexão com o banco -->
+			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/dbBVR"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+			<property name="hibernate.connection.username" value="postgres"/>
+			<property name="hibernate.connection.password" value="12345"/>
+			<property name="hibernate.hbm2ddl.auto" value="update" />	
+			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.show_sql" value="true"/>		
+		</properties>
      
    </persistence-unit>
 </persistence>

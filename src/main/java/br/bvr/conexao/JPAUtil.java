@@ -1,4 +1,6 @@
-package br.sefaz.conexao;
+package br.bvr.conexao;
+
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -21,13 +23,14 @@ public class JPAUtil {
 		 
 		if (factory == null) {
 		
-		factory = Persistence.createEntityManagerFactory("dbsefaz01");
+		factory = Persistence.createEntityManagerFactory("BVR-PU");
 		
 		}
 	}
 	
 	public static EntityManager getEntityManager() {
-		return factory.createEntityManager();
+		return factory.createEntityManager(); //persistencia
+		
 	}
 	
 	//metodo que identifica a chave primaria de um objeto

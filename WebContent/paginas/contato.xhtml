@@ -5,6 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
+
 	<ui:include src="/template/principal.xhtml" />
 	<style>
 * {
@@ -48,20 +49,15 @@
 <h:body>
 	<h:form>
 
-		<div class="msg">
-			<p:messages id="messages" showDetail="true" closable="true">
-				<p:autoUpdate />
-			</p:messages>
-
-		</div>
+		
+		
 		<div class="conteudo">
 			<div class="contato">
 				
 				<h:outputText />
-				
-				
-		<p:outputLabel value="#{contatobean.user.nome}"/>
-						
+					<h:outputText value="Usuário : "/>
+					<h:outputText value="#{contatobean.user.nome}"/>
+					
 						
 				<h:column>
 					<p:selectOneMenu id="tipo" style="width:100px" dir="rtl"
@@ -74,23 +70,23 @@
 
 					</p:selectOneMenu>
 
-					<p:selectOneMenu id="ddd" style="width:100px" dir="rtl"
-						value="#{contatobean.contato.ddd}">
-						<f:selectItem itemLabel="DDD" itemValue="" />
-						<f:selectItem itemLabel="81" itemValue="81" />
-						<f:selectItem itemLabel="85" itemValue="85" />
-						<f:selectItem itemLabel="11" itemValue="11" />
-						<f:selectItem itemLabel="21" itemValue="21" />
-
-					</p:selectOneMenu>
+					
 
 					<br />
 					<p:outputLabel value="Numero" />
 					<p:inputText value="#{contatobean.contato.numero}" />
+					
+					
 					<br />
 					<br />
-					<p:commandButton value="Salvar Contato"
+					<h:commandButton value="Salvar Contato"
 						action="#{contatobean.salvarContato}" />
+						<div class="msg">
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+
+	</div>
 
 				</h:column>
 
@@ -99,5 +95,6 @@
 
 		</div>
 	</h:form>
+	
 </h:body>
 </html>

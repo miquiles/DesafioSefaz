@@ -1,44 +1,51 @@
-package br.sefaz.entidades;
+package br.bvr.entidades;
 
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import org.hibernate.jpa.boot.spi.Settings;
+
 
 
 
 @Entity(name = "pessoa")
-public class Pessoa {
+public class Pessoa implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id 
-	@Column(name = "id")
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(name = "cpf", nullable = false)
+	@Column(nullable = false)
 	private String CPF;
 	
-	@Column (name = "email", nullable = false)
+	@Column (nullable = false)
 	private String email;
 	
-	@Column(name = "senha", nullable = false)
+	@Column(nullable = false)
 	private String senha;
-	@Column(name = "nome", nullable = false)
+	@Column(nullable = false)
 	private String nome;
-	@Column(name = "sobrenome", nullable = false)
+	@Column(nullable = false)
 	private String sobrenome;
 	
-	@Column(name = "sexo", nullable = false)
+	@Column(nullable = false)
 	private String sexo;
 	
-	@OneToMany(mappedBy = "pessoa")
+	@OneToMany(mappedBy = "pessoa", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE,orphanRemoval = true)
 	private List<Contato> contato;
 	
 	

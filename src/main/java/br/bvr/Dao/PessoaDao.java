@@ -1,14 +1,14 @@
-package br.sefaz.Dao;
+package br.bvr.Dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import br.sefaz.entidades.Pessoa;
-import br.sefaz.conexao.JPAUtil;
+import br.bvr.conexao.JPAUtil;
+import br.bvr.entidades.Pessoa;
 
-public class PessoaDao {
+public class PessoaDao<E> extends DaoGeneric<Pessoa>{
 	
 	
 

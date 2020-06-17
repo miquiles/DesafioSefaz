@@ -1,4 +1,4 @@
-package br.sefaz.beans;
+package br.bvr.beans;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import br.sefaz.Dao.PessoaDao;
-import br.sefaz.entidades.Pessoa;
+import br.bvr.Dao.PessoaDao;
+import br.bvr.entidades.Pessoa;
 
 @SessionScoped
 @ManagedBean(name = "loginbean")
@@ -22,7 +22,7 @@ public class LoginBean {
 	
 	private List<Pessoa> listarPessoas = new ArrayList<Pessoa>();
 	private Pessoa pessoa = new Pessoa();
-	private PessoaDao pessoaDao = new PessoaDao();
+	private PessoaDao<Pessoa> pessoaDao = new PessoaDao<Pessoa>();
 	
 	
 	
@@ -31,7 +31,7 @@ public class LoginBean {
 	public LoginBean() {
 		this.listarPessoas = new ArrayList<Pessoa>();
 		this.setPessoa(new Pessoa());
-		this.setPessoaDao(new PessoaDao());
+		this.setPessoaDao(new PessoaDao<Pessoa>());
 		
 	}
 	
@@ -101,15 +101,16 @@ public class LoginBean {
 		this.pessoa = pessoa;
 	}
 
-
-	public PessoaDao getPessoaDao() {
+	public PessoaDao<Pessoa> getPessoaDao() {
 		return pessoaDao;
 	}
 
-
-	public void setPessoaDao(PessoaDao pessoaDao) {
+	public void setPessoaDao(PessoaDao<Pessoa> pessoaDao) {
 		this.pessoaDao = pessoaDao;
 	}
+
+
+	
 
 
 

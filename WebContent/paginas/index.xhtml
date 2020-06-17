@@ -6,6 +6,8 @@
 
 <h:head>
 
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
 
 
 
@@ -137,8 +139,8 @@ font-size: 20px;
 		<div class="pesquisar">
 
 			<p:inputText placeholder="Por Id" value="#{pessoabean.pessoa.id}"/>
-			<p:commandButton value="Pesquisar" action="#{pessoabean.pesquisarId}" target="#{pessoabean.pessoa}" update=":resultPesquisa" 
-			oncomplete="PF('dialogPesquisar').show();"/>
+			<p:commandButton   action="#{pessoabean.pesquisarId}" target="#{pessoabean.pessoa}" update=":resultPesquisa" 
+			oncomplete="PF('dialogPesquisar').show();" icon="pi pi-search"/>
 
 
 		</div>
@@ -148,6 +150,7 @@ font-size: 20px;
 		</f:metadata>
 		
 		<h1>Lista de todos os usuários</h1>
+		
 
 		<p:dataTable border="2" value="#{pessoabean.testeListar}" var="p"
 			scrollable="true" scrollHeight="100">
@@ -158,7 +161,7 @@ font-size: 20px;
 			</p:column>
 
 
-			<p:column headerText="Nome" footerText="Nome">
+			<p:column  headerText="Nome" footerText="Nome">
 
 				<h:outputText value="#{p.nome}" />
 
@@ -198,7 +201,7 @@ font-size: 20px;
 
 			<p:column headerText="Editar" footerText="Editar" style="color:blue;">
 
-				<h:commandLink update="@form">
+				<h:commandLink update="@form" >
 					<h:graphicImage url="/resources/img/editar.png" width="25"
 						height="25" />
 					<f:setPropertyActionListener value="#{p}"
@@ -206,6 +209,7 @@ font-size: 20px;
 					</f:setPropertyActionListener>
 				</h:commandLink>
 			</p:column>
+			
 
 			<p:column headerText="Deletar" footerText="Deletar"
 				style="color:blue;">
@@ -219,13 +223,14 @@ font-size: 20px;
 				</h:commandLink>
 			</p:column>
 
+
 			<p:column headerText="Contatos" footerText="Contatos"
 				style="color:blue;">
 
-				<h:commandLink update="@form"  action="/paginas/contato.xhtml">
+				<h:commandLink  action="/paginas/contato.xhtml">
 					<h:graphicImage url="/resources/img/whatsapp-logo-1.png" width="35" 
 						height="25" />
-					<f:param name="codigoUser" value="#{p.id}"></f:param>
+					<f:param name="codigouser" value="#{p.id}"></f:param>
 				</h:commandLink>
 			</p:column>
 
@@ -323,15 +328,7 @@ font-size: 20px;
 				</h:commandLink>
 			</p:column>
 
-			<p:column headerText="Contatos" footerText="Contatos"
-				style="color:blue;">
-
-				<h:commandLink update="@form"  action="/paginas/contato.xhtml">
-					<h:graphicImage url="/resources/img/whatsapp-logo-1.png" width="35" 
-						height="25" />
-					<f:param name="codigoUser" value="pessoa.id" />
-				</h:commandLink>
-			</p:column>
+			
 
 
 
@@ -339,4 +336,12 @@ font-size: 20px;
 		</h:form>
 		
 </p:dialog>
+
+
+
+
+
+
+
+
 </html>

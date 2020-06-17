@@ -1,4 +1,6 @@
-package br.sefaz.entidades;
+package br.bvr.entidades;
+
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,29 +8,27 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.ManyToOne;
 
 
 @Entity(name = "contato")
-public class Contato {
+public class Contato 
+{
 		
+	
+
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
-		@Column(name = "id")
 		public Long id;
 		
-		@Column(name = "ddd", nullable = false )
-		public int ddd;
-		
-		@Column(name = "tipo", nullable = false)
+		@Column(nullable = false)
 		public String tipo;
 		
-		@Column(name = "numero", nullable = false)
+		@Column(nullable = false)
 		public String numero;
 		
 		@ManyToOne(optional = false, fetch = FetchType.EAGER)
-		@JoinColumn(name = "id_pessoa")
 		private Pessoa pessoa;
 		
 		public Long getId() {
@@ -37,12 +37,7 @@ public class Contato {
 		public void setId(Long id) {
 			this.id = id;
 		}
-		public int getDdd() {
-			return ddd;
-		}
-		public void setDdd(int ddd) {
-			this.ddd = ddd;
-		}
+	
 		public String getTipo() {
 			return tipo;
 		}
@@ -61,6 +56,8 @@ public class Contato {
 		public void setPessoa(Pessoa pessoa) {
 			this.pessoa = pessoa;
 		}
+	
+
 		
 		
 }

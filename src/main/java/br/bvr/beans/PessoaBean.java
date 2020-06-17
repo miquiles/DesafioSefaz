@@ -1,26 +1,32 @@
-package br.sefaz.beans;
+package br.bvr.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+
 
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpSession;
 
-import br.sefaz.Dao.PessoaDao;
-import br.sefaz.entidades.Pessoa;
+import br.bvr.Dao.PessoaDao;
+import br.bvr.entidades.Pessoa;
 
 
 
-@SessionScoped
+@ViewScoped
 @ManagedBean(name = "pessoabean")
-public class PessoaBean {
+public class PessoaBean implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Pessoa pessoa = new Pessoa();
-	PessoaDao pessoaDao = new PessoaDao();
+	PessoaDao<Pessoa> pessoaDao = new PessoaDao<Pessoa>();
 	
 	List<Pessoa> listarTodos = new ArrayList<Pessoa>();
 	List<Pessoa> listarUsuarios = new ArrayList<Pessoa>();
@@ -177,7 +183,7 @@ public class PessoaBean {
 		this.listarUsuarios = listarUsuarios;
 	}
 
-	public PessoaDao getPessoaDao() {
+	public PessoaDao<Pessoa> getPessoaDao() {
 		return pessoaDao;
 	}
 
@@ -188,7 +194,7 @@ public class PessoaBean {
 
 
 
-	public void setPessoaDao(PessoaDao pessoaDao) {
+	public void setPessoaDao(PessoaDao<Pessoa> pessoaDao) {
 		this.pessoaDao = pessoaDao;
 	}
 

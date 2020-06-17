@@ -109,10 +109,9 @@ to {
 
 
 .msg{
-animation-name: move;
-animation-duration: 4s;
-margin-left: 950px;
-   height: 40px;
+
+
+
     background-color: #7159c1;
     
   }
@@ -135,12 +134,7 @@ margin-left: 295px;
     </h:head>
  
     <h:body>
-       <div class="msg">
-       <p:messages id="messages" showDetail="true" closable="true">
-     			   <p:autoUpdate/>
-    			</p:messages>
-    			
-    			</div>
+      
        
         <section class="form-section">
     	<h1>Cadastre seus dados</h1>
@@ -188,7 +182,12 @@ margin-left: 295px;
         		
         		<p:commandButton value="Salvar" action="#{pessoabean.salvar}"/>
         		<p:commandButton value="Logar" action="login.xhtml"/>
-        		
+        		 <div class="msg">
+       <p:messages id="messages" showDetail="true" closable="true">
+     			   <p:autoUpdate/>
+    			</p:messages>
+    			
+    			</div>
     			</div>
     			
     			  </h:form>

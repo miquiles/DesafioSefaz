@@ -83,12 +83,12 @@
 </dependency>
 
 
-   <dependency>
- 		  <groupId> mysql</groupId>
- 		  <artifactId>mysql-connector-java</artifactId>
-   <version>8.0.16</version>
-   </dependency>
-
+  <dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.2-1003-jdbc4</version>
+			<scope>compile</scope>
+		</dependency>
 
 <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
 <dependency>
@@ -102,6 +102,13 @@
     <groupId>org.hibernate.common</groupId>
     <artifactId>hibernate-commons-annotations</artifactId>
     <version>4.0.5.Final</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.0-api -->
+<dependency>
+    <groupId>org.hibernate.javax.persistence</groupId>
+    <artifactId>hibernate-jpa-2.0-api</artifactId>
+    <version>1.0.1.Final</version>
 </dependency>
 
 
