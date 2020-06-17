@@ -15,8 +15,8 @@ public class Testes {
 	
 	@Test
 	public void testGravarTelefone() throws SQLException {
-		DaoGeneric<Pessoa> genericDAO = new DaoGeneric<>();
-		ContatoDao<Contato> contatoDao = new ContatoDao<>();
+		DaoGeneric<Pessoa> genericDAO = new DaoGeneric<Pessoa>();
+		ContatoDao<Contato> contatoDao = new ContatoDao<Contato>();
 		Pessoa pessoa = (Pessoa) genericDAO.pesquisar(1L, Pessoa.class);
 		
 		Contato telefoneUser = new Contato();
@@ -30,7 +30,7 @@ public class Testes {
 	public void salvarPessoa() throws SQLException{
 		//DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<>();
 		Pessoa pessoa = new Pessoa();
-		PessoaDao<Pessoa> pessoaDao = new PessoaDao<>();
+		PessoaDao<Pessoa> pessoaDao = new PessoaDao<Pessoa>();
 		
 		pessoa.setNome("pessoaTeste");
 		pessoa.setSobrenome("da silva");

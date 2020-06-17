@@ -26,10 +26,10 @@ public class ContatoBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Contato contato = new Contato();
-	private ContatoDao<Contato> contatoDao = new ContatoDao<>();
-	private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<>();
+	private ContatoDao<Contato> contatoDao = new ContatoDao<Contato>();
+	private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
 	
-	private PessoaDao<Pessoa> pessoaDao = new PessoaDao<>();
+	private PessoaDao<Pessoa> pessoaDao = new PessoaDao<Pessoa>();
 	private Pessoa user = new Pessoa();
 	
 	
