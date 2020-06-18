@@ -36,12 +36,12 @@ public class ContatoBean implements Serializable{
 	
 	
 	@PostConstruct
-	public void init() {
+	public String init() {
 		String coduser = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("codigouser");
-		user = daoGeneric.pesquisar(Long.parseLong(coduser), Pessoa.class);
-		//user = pessoaDao.pesquisar(Long.parseLong(coduser), Pessoa.class);
+		user = pessoaDao.pesquisar(Long.parseLong(coduser), Pessoa.class);
 		
 		
+		return "";
 	}
 	
 	

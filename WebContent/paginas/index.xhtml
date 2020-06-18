@@ -227,11 +227,12 @@ font-size: 20px;
 			<p:column headerText="Contatos" footerText="Contatos"
 				style="color:blue;">
 
-				<h:commandLink  action="/paginas/contato.xhtml">
+				<p:commandLink
+				onclick="PF('dialogContato').show();">
 					<h:graphicImage url="/resources/img/whatsapp-logo-1.png" width="35" 
 						height="25" />
 					<f:param name="codigouser" value="#{p.id}"></f:param>
-				</h:commandLink>
+				</p:commandLink>
 			</p:column>
 
 
@@ -338,9 +339,57 @@ font-size: 20px;
 </p:dialog>
 
 
+<p:dialog modal="true" widgetVar="dialogContato" rendered="true" width="600" height="200" header="Cadastro de Telefones" >
 
 
 
+
+
+		
+		
+				
+				<h:outputText />
+					<h:outputText value="Usuário : "/>
+					<h:outputText value="#{contatobean.user.nome}"/>
+					
+						
+				<h:column>
+					<p:selectOneMenu id="tipo" style="width:100px" dir="rtl"
+						value="#{contatobean.contato.tipo}">
+						<f:selectItem itemLabel="Tipo" itemValue="" />
+						<f:selectItem itemLabel="Celular" itemValue="Celular" />
+						<f:selectItem itemLabel="Empresarial" itemValue="Empresarial" />
+						<f:selectItem itemLabel="Fixo" itemValue="Fixo" />
+
+
+					</p:selectOneMenu>
+
+					
+
+					<br />
+					<p:outputLabel value="Numero" />
+					<p:inputText value="#{contatobean.contato.numero}" />
+					
+					
+					<br />
+					<br />
+					<h:commandButton value="Salvar Contato"
+						action="#{contatobean.salvarContato}" />
+						
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+
+	
+
+				</h:column>
+
+
+
+
+
+
+</p:dialog>
 
 
 
