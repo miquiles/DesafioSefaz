@@ -8,17 +8,30 @@ import br.bvr.conexao.JPAUtil;
 
 public class DaoGeneric<E> {
 	
-	EntityManager entityManager = JPAUtil.getEntityManager();
+	private EntityManager entityManager = JPAUtil.getEntityManager();
 
 	
 	public E pesquisar(Long id, Class<E> entidade) {
 		
 		entityManager.clear();
 		E e = (E) entityManager.find(entidade, id);
+		//E e = (E) entityManager.createQuery("from " + entidade.getSimpleName() + " where id = " + id).getSingleResult();
 		return e;
 	}
 	
-	public E pesquisar(E entidade) {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public E pesquisa(E entidade) {
 		Object id = JPAUtil.getPrimaryKey(entidade);
 		@SuppressWarnings("unchecked")
 		E e = (E) entityManager.find(entidade.getClass(), id);
@@ -27,7 +40,7 @@ public class DaoGeneric<E> {
 	
 	
 	
-public E salvar(E entidade) {
+	public E salvar(E entidade) {
 		
 		
 		
@@ -45,7 +58,9 @@ public E salvar(E entidade) {
 		return e;
 	}
 
-
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
 
 	
 }

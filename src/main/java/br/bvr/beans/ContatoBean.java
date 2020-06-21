@@ -8,7 +8,7 @@ import javax.annotation.PostConstruct;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
+
 
 import br.bvr.Dao.ContatoDao;
 import br.bvr.Dao.DaoGeneric;
@@ -17,7 +17,7 @@ import br.bvr.entidades.Contato;
 import br.bvr.entidades.Pessoa;
 
 
-@ViewScoped
+@javax.faces.bean.ViewScoped
 @ManagedBean(name = "contatobean")
 public class ContatoBean implements Serializable{
 	
@@ -30,18 +30,15 @@ public class ContatoBean implements Serializable{
 	private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
 	
 	private PessoaDao<Pessoa> pessoaDao = new PessoaDao<Pessoa>();
+	
 	private Pessoa user = new Pessoa();
 	
 	
 	
-	
 	@PostConstruct
-	public String init() {
+	public void init() {
 		String coduser = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("codigouser");
 		user = pessoaDao.pesquisar(Long.parseLong(coduser), Pessoa.class);
-		
-		
-		return "";
 	}
 	
 	
@@ -49,6 +46,7 @@ public class ContatoBean implements Serializable{
 		contato.setPessoa(user);
 		contatoDao.salvar(contato);
 		contato = new Contato();
+		user = pessoaDao.pesquisar(user.getId(), Pessoa.class);
 		
 		
 		

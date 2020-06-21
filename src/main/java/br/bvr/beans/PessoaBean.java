@@ -32,6 +32,7 @@ public class PessoaBean implements Serializable {
 	List<Pessoa> listarUsuarios = new ArrayList<Pessoa>();
 	List<Pessoa> listarUser = new ArrayList<Pessoa>();
 	List<Pessoa> testeListar = new ArrayList<Pessoa>();
+	
 	List<Pessoa> usuarioPesquisa = new ArrayList<Pessoa>();
 	
 	

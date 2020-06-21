@@ -10,9 +10,7 @@ import br.bvr.entidades.Pessoa;
 
 public class PessoaDao<E> extends DaoGeneric<Pessoa>{
 	
-	
 
-	
 	
 	public void removerPeloID (Pessoa pessoa) {
 		EntityManager entityManager = JPAUtil.getEntityManager();

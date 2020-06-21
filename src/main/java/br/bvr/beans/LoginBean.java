@@ -53,7 +53,7 @@ public class LoginBean {
 			HttpSession sessao =  (HttpSession)FacesContext.getCurrentInstance()
 					.getExternalContext().getSession(true);
 			sessao.setAttribute("usuarioLogado", usuarioLogado);
-			// testando o retorno 
+			
 			return "/paginas/index.xhmtl?faces-redirect=true&amp;includeViewParams=true";
 			
 		}else {

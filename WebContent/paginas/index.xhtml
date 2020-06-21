@@ -6,9 +6,6 @@
 
 <h:head>
 
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
-
 
 
 	<ui:include src="/template/principal.xhtml" />
@@ -79,7 +76,7 @@ font-size: 20px;
 
 </h:head>
 
-
+<h:body>
 
 <h:form>
 
@@ -127,7 +124,7 @@ font-size: 20px;
 				style="width:170px" />
 
 			<p:commandButton value="Adicionar" action="#{pessoabean.update}"
-				style="width:85px" update="@form" />
+				style="width:85px" />
 			<p:commandButton value="Limpar" action="#{pessoabean.limparCampos}"
 				update="@form" />
 
@@ -214,13 +211,13 @@ font-size: 20px;
 			<p:column headerText="Deletar" footerText="Deletar"
 				style="color:blue;">
 
-				<h:commandLink update="@form" action="#{pessoabean.remover}">
+				<p:commandLink update="@form" action="#{pessoabean.remover}">
 					<h:graphicImage url="/resources/img/delete.png" width="25"
 						height="25" />
 					<f:setPropertyActionListener value="#{p}"
 						target="#{pessoabean.pessoa}">
 					</f:setPropertyActionListener>
-				</h:commandLink>
+				</p:commandLink>
 			</p:column>
 
 
@@ -228,10 +225,10 @@ font-size: 20px;
 				style="color:blue;">
 
 				<p:commandLink
-				onclick="PF('dialogContato').show();">
+				action="/paginas/telefones.xhmtl" immediate="true" id="btnTelefone">
 					<h:graphicImage url="/resources/img/whatsapp-logo-1.png" width="35" 
 						height="25" />
-					<f:param name="codigouser" value="#{p.id}"></f:param>
+					<f:param name="codigouser" value="#{p.id}"/>
 				</p:commandLink>
 			</p:column>
 
@@ -320,13 +317,13 @@ font-size: 20px;
 			<p:column headerText="Deletar" footerText="Deletar"
 				style="color:blue;">
 
-				<h:commandLink update="@form" action="#{pessoabean.remover}">
+				<p:commandLink update="@form" action="#{pessoabean.remover}">
 					<h:graphicImage url="/resources/img/delete.png" width="25"
 						height="25" />
 					<f:setPropertyActionListener value="#{p}"
 						target="#{pessoabean.pessoa}">
 					</f:setPropertyActionListener>
-				</h:commandLink>
+				</p:commandLink>
 			</p:column>
 
 			
@@ -339,58 +336,6 @@ font-size: 20px;
 </p:dialog>
 
 
-<p:dialog modal="true" widgetVar="dialogContato" rendered="true" width="600" height="200" header="Cadastro de Telefones" >
-
-
-
-
-
-		
-		
-				
-				<h:outputText />
-					<h:outputText value="Usuário : "/>
-					<h:outputText value="#{contatobean.user.nome}"/>
-					
-						
-				<h:column>
-					<p:selectOneMenu id="tipo" style="width:100px" dir="rtl"
-						value="#{contatobean.contato.tipo}">
-						<f:selectItem itemLabel="Tipo" itemValue="" />
-						<f:selectItem itemLabel="Celular" itemValue="Celular" />
-						<f:selectItem itemLabel="Empresarial" itemValue="Empresarial" />
-						<f:selectItem itemLabel="Fixo" itemValue="Fixo" />
-
-
-					</p:selectOneMenu>
-
-					
-
-					<br />
-					<p:outputLabel value="Numero " />
-					<p:inputText value="#{contatobean.contato.numero}" />
-					
-					
-					<br />
-					<br />
-					<h:commandButton value="Salvar Contato"
-						action="#{contatobean.salvarContato}" />
-						
-		<p:messages id="messages" showDetail="true" closable="true">
-			<p:autoUpdate />
-		</p:messages>
-
-	
-
-				</h:column>
-
-
-
-
-
-
-</p:dialog>
-
-
+</h:body>
 
 </html>

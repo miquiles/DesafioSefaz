@@ -28,8 +28,9 @@ public class Contato
 		@Column(nullable = false)
 		public String numero;
 		
-		@ManyToOne(optional = false, fetch = FetchType.EAGER)
+		@ManyToOne(fetch = FetchType.EAGER)
 		private Pessoa pessoa;
+		
 		
 		public Long getId() {
 			return id;
