@@ -9,7 +9,7 @@
 
 <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
 	<link rel="stylesheet" type="text/css"
-		href="#{facesContext.externalContext.requestContextPath}/resources/css/cad_telefones.css"
+		href="#{facesContext.externalContext.requestContextPath}/resources/css/telefones-estilo.css"
 		media="screen" />
 
 </h:head>
@@ -18,7 +18,10 @@
 
 <h:form>
 		
-	
+	<f:metadata>
+
+			<f:viewAction action="#{pessoabean.atualizarUsuarioLogado}" />
+		</f:metadata>
 <ui:include src="/template/principal.xhtml"/>
 
  
@@ -26,7 +29,8 @@
 	<div class="conteudo">
 	
 	
-<h1> Aqui retornará uma lista de Pessoas e Telefones com Inner Join</h1>
+<h1> Relação de Usuários e seus telefones</h1>
+<br/>
 
 	
 	
@@ -37,18 +41,19 @@
 	</div>
 	
 	
-
-		<!-- 
 	
-	<p:dataTable border="2" value="#{pessoabean.relatorioPessoaTelefone}" var="pessoa"
-			scrollable="true" scrollHeight="200" >
+
+	
+	
+	<p:dataTable border="2" value="#{consultabean.lista}" var="contato"
+			scrollable="true" scrollHeight="500" >
 			
 			
 			
 
 			<p:column  headerText="Nome" footerText="Nome" width="15">
 
-				<h:outputText value="#{pessoa.nome}" />
+				<h:outputText value="#{contato.pessoa.nome}" />
 
 			</p:column>
 			
@@ -78,7 +83,7 @@
 
 
 </p:dataTable>
- -->
+ 
 
 
 			

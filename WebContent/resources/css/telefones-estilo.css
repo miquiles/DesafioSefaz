@@ -1,8 +1,17 @@
-h1{
-    font-family: sans-serif;
-font-size: 20px;    
+.telefones{
+	
+	    color: #afa7ef;
+    font-style: italic;
+	
+	
 }	
 
+
+h1{
+    font-family: sans-serif;
+font-size: 20px;  
+color: #6aa8aa;  
+}	
 
 	
 .ui-datatable-tablewrapper {
@@ -10,13 +19,13 @@ font-size: 20px;
 }
 
 .conteudo {
-	margin-left: 366px;
-	width: 900px;
-	height: 584px;
-	margin-top: 19px;
-	background-color: #fafafa;
-	padding: 20px;
-	border-style: inset;
+margin-left: 23%;
+    width: 75%;
+    height: 584px;
+    margin-top: 19px;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-style: inset;
 }
 .telefones{
 	

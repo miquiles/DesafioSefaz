@@ -184,7 +184,7 @@
 <p:dialog modal="true" widgetVar="dialogPesquisar" rendered="true" width="600" height="200" header="Resultado da Pesquisa" footer="Pesquisa por Nome">
 <h:form id="resultPesquisa">
 
-<p:dataTable value="#{pessoabean.usuarioPesquisaPorNome}" var="p"
+<p:dataTable value="#{pessoabean.listarUser}" var="p"
 			scrollable="true" scrollHeight="100">
 			<p:column headerText="Id" footerText="Id">
 
@@ -231,12 +231,12 @@
 <h:form id="formEditar">
 			
 			
-			<p:outputLabel value="Id" style="margin-left: 10px;"/>
-			<p:inputText  value="#{pessoabean.pessoa.id}" disabled="true"
-			style="width:20%"	/>
+			
+			<p:outputLabel  value="#{pessoabean.pessoa.id}"
+			style="width:20%; margin-left: 10px;"	/>
 			
 			
-			
+			<br/>
 			<p:outputLabel value="Nome" style="margin-left: 10px;" />
 			<p:inputText  value="#{pessoabean.pessoa.nome}"
 			style="width:60%"	/>
@@ -254,7 +254,7 @@
 
 			
 
-<h:commandButton value="Atualizar" action="#{pessoabean.update}" 	style="width:60%"	/>
+<h:commandButton value="Atualizar" actionListener="#{pessoabean.update}" update="@form"	style="width:60%"	/>
 
 	
 		</h:form>

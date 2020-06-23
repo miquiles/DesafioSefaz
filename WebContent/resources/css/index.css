@@ -23,13 +23,13 @@ color: #6aa8aa;
 }
 
 .conteudo {
-	margin-left: 366px;
-	width: 900px;
-	height: 584px;
-	margin-top: 19px;
-	background-color: #f7f7f7;
-	padding: 20px;
-	border-style: inset;
+margin-left: 23%;
+    width: 75%;
+    height: 584px;
+    margin-top: 19px;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-style: inset;
 }
 
 .input-block {
@@ -104,7 +104,7 @@ input[type="password"]{
 
 
 .pesquisar input[type="text"] {
-        width: 17%;
+        width: 12%;
         height: 30px;
     display: block;
     margin-top: 0px;

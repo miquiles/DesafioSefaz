@@ -37,24 +37,7 @@ public class PessoaDao<E> extends DaoGeneric<Pessoa>{
 
 	
 	
-	public Pessoa update(Pessoa pessoa) {
-		
-		EntityManager entityManager = JPAUtil.getEntityManager();
-		EntityTransaction entityTransaction = entityManager.getTransaction();
-		
-		//Abrindo a sessão
-		entityTransaction.begin();
-		
-		//Merge insere e retorna o objeto
-		Pessoa retornoPessoa = (Pessoa) entityManager.merge(pessoa);
-		entityTransaction.commit();
-		entityManager.close();
-		
-
-		return retornoPessoa;
-		
-		
-	}
+	
 
 	public  Pessoa salvarPessoa(Pessoa pessoa) {
 		

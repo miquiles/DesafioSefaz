@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import br.sefaz.Dao.ContatoDao;
 import br.sefaz.Dao.DaoGeneric;
@@ -44,6 +45,7 @@ public class ContatoBean implements Serializable{
 	
 	@PostConstruct
 	public void init() {
+		
 		String coduser = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("codigouser");
 		user = daoGeneric.pesquisar(Long.parseLong(coduser), Pessoa.class);
 	}
@@ -62,7 +64,7 @@ public class ContatoBean implements Serializable{
 		.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"","Salvo com sucesso!"));
 		
 		
-		return "";
+		return "relatorio.xhtml";
 		}
 		catch (Exception e) {
 			if (e.getCause() instanceof java.lang.NumberFormatException) {
@@ -143,9 +145,6 @@ public class ContatoBean implements Serializable{
 
 
 	
-
-
-
 
 
 

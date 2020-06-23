@@ -12,7 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpSession;
 
-
+import br.sefaz.Dao.DaoGeneric;
 import br.sefaz.Dao.PessoaDao;
 
 import br.sefaz.entidades.Pessoa;
@@ -27,6 +27,7 @@ import br.sefaz.entidades.Pessoa;
 @ManagedBean(name = "pessoabean")
 public class PessoaBean implements Serializable {
 	
+	private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -37,9 +38,9 @@ public class PessoaBean implements Serializable {
 	//Listas
 	private List<Pessoa> listarTodos = new ArrayList<Pessoa>();
 	private List<Pessoa> listarUsuarios = new ArrayList<Pessoa>();
+	//Para pesquisa por nome
 	private List<Pessoa> listarUser = new ArrayList<Pessoa>();
-	
-	private List<Pessoa> usuarioPesquisaPorNome = new ArrayList<Pessoa>();
+
 
 	//input pesquisa por nome
 	private String txtNomePesquisa;
@@ -136,13 +137,12 @@ public class PessoaBean implements Serializable {
 		return "";
 	}
 	
-	
-	public void update(){
+	Pessoa pessoa3 = new Pessoa();
+	public String update(){
 		
-		pessoaDao.update(pessoa);
+		pessoa3 = daoGeneric.update(pessoa);
 		
-		FacesContext.getCurrentInstance()
-		.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"","Editado com sucesso!"));
+		return "";	
 		
 	}	
 	
@@ -169,16 +169,7 @@ public class PessoaBean implements Serializable {
 	
 
 	
-	public void setUsuarioPesquisaPorNome(List<Pessoa> usuarioPesquisaPorNome) {
-		this.usuarioPesquisaPorNome = usuarioPesquisaPorNome;
-	}
 	
-	
-	public List<Pessoa> getUsuarioPesquisaPorNome() {
-		
-		usuarioPesquisaPorNome = pessoaDao.pesquisarPorNome(txtNomePesquisa);
-		return usuarioPesquisaPorNome;
-	}
 	
 	
 	
@@ -283,6 +274,22 @@ public class PessoaBean implements Serializable {
 
 	public void setList(List<Pessoa> list) {
 		this.list = list;
+	}
+
+
+
+
+
+	public DaoGeneric<Pessoa> getDaoGeneric() {
+		return daoGeneric;
+	}
+
+
+
+
+
+	public void setDaoGeneric(DaoGeneric<Pessoa> daoGeneric) {
+		this.daoGeneric = daoGeneric;
 	}
 
 
