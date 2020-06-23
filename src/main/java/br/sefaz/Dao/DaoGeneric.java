@@ -33,7 +33,7 @@ public class DaoGeneric<E> {
 	
 	
 	
-	public E salvar(E entidade) {
+	public E salvar(E entidade) throws Exception{
 		
 		
 		

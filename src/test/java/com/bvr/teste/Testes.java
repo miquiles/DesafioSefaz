@@ -17,7 +17,7 @@ import br.sefaz.entidades.Pessoa;
 public class Testes {
 	
 	@Test
-	public void testGravarTelefone() throws SQLException {
+	public void testGravarTelefone() throws Exception {
 		DaoGeneric<Pessoa> genericDAO = new DaoGeneric<Pessoa>();
 		ContatoDao<Contato> contatoDao = new ContatoDao<Contato>();
 		Pessoa pessoa = (Pessoa) genericDAO.pesquisar(1L, Pessoa.class);
