@@ -1,18 +1,18 @@
 package br.sefaz.Dao;
 
 import java.util.List;
-/**
- * @author Pedro Miquiles
- */
+
 
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
+
 
 import br.sefaz.conexao.JPAUtil;
 import br.sefaz.entidades.Pessoa;
-
+/**
+ * @author Pedro Miquiles
+ */
 public class PessoaDao<E> extends DaoGeneric<Pessoa>{
 	
 
@@ -34,22 +34,7 @@ public class PessoaDao<E> extends DaoGeneric<Pessoa>{
 		
 	}
 	
-	/*
-	public void removerPessoa(Pessoa pessoa) {
-		getEntityManager().getTransaction().begin();
-		
-		
-		getEntityManager().remove(pessoa);
-		
-		getEntityManager().getTransaction().commit();
-		
-		
-	}
-	
-	*/
-	
 
-	
 	
 	
 	public Pessoa update(Pessoa pessoa) {
@@ -89,21 +74,7 @@ public class PessoaDao<E> extends DaoGeneric<Pessoa>{
 		return retornoPessoa;
 	}
 	
-	public static List<Pessoa> getListEntity(Class<Pessoa> pessoa){
-		
-		EntityManager entityManager = JPAUtil.getEntityManager();
-		EntityTransaction entityTransaction = entityManager.getTransaction();
-		
-		entityTransaction.begin();
-		
-		List<Pessoa> pessoas = entityManager.createQuery("from pessoa").getResultList();
-		
-		entityTransaction.commit();
-		entityManager.close();
-		
-		return pessoas;
-		
-	}
+	
 	
 	
 	public List<Pessoa> listarTodos() {
@@ -112,6 +83,7 @@ public class PessoaDao<E> extends DaoGeneric<Pessoa>{
 
 		javax.persistence.Query query = entityManager.createQuery("from pessoa");
 
+		@SuppressWarnings("unchecked")
 		List<Pessoa> pessoa = query.getResultList();
 
 		return pessoa;
@@ -124,25 +96,11 @@ public class PessoaDao<E> extends DaoGeneric<Pessoa>{
 	
 	public List<Pessoa> pesquisarPorNome(String nome){
 		EntityManager entityManager = JPAUtil.getEntityManager();
-		return entityManager.createQuery("from pessoa where nome like :nome", Pessoa.class)
+		return entityManager.createQuery("from pessoa where nome like :nome ", Pessoa.class)
 				.setParameter("nome", "%" + nome + "%").getResultList();
 	}
 	
-	/*
-	public Long pesquisarCodigo(Long id) {
-
-		EntityManager entityManager = JPAUtil.getEntityManager();
-		
-		javax.persistence.Query query = entityManager.createQuery("from pessoa where id =" + id);
-
-		
-		
-		return id;
-		
-
-	}
 	
-	*/
 	
 	
 		

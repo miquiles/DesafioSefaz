@@ -10,7 +10,7 @@ import javax.persistence.EntityTransaction;
 
 import br.sefaz.conexao.JPAUtil;
 import br.sefaz.entidades.Contato;
-import br.sefaz.entidades.Pessoa;
+
 
 /**
  * @author Pedro Miquiles
@@ -19,6 +19,7 @@ import br.sefaz.entidades.Pessoa;
 public class ContatoDao<E> extends DaoGeneric<Contato> {
 	
 	
+	@SuppressWarnings("unchecked")
 	public List<Contato> listarTodos() {
 
 		EntityManager entityManager = JPAUtil.getEntityManager();

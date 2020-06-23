@@ -50,19 +50,22 @@
 	<p:outputLabel value="DDD"/>
 	<br/>
 	
-	<p:selectOneMenu id="ddd" value="#{contatobean.contato.ddd}"  label="DDD" style="width: 189px;">
+	<p:selectOneMenu id="ddd" value="#{contatobean.contato.ddd}"  label="DDD" style="width: 189px;" >
                 <f:selectItem itemLabel="Selecione.." itemValue="" noSelectionOption="true" />
                 <f:selectItem itemLabel="81" itemValue="81" />
                 <f:selectItem itemLabel="11" itemValue="11" />
                 <f:selectItem itemLabel="21" itemValue="21" />
                 
+                 <f:validateLength minimum="1" />
                 
             </p:selectOneMenu>
 	
 	<br/>
 	<p:outputLabel value="Numero"/>
 	<br/>
-	<p:inputText value="#{contatobean.contato.numero}"  style="margin-left:0;" maxlength="9" placeholder="88888-8888" />
+	<p:inputText value="#{contatobean.contato.numero}"  style="margin-left:0;" maxlength="9" placeholder="88888-8888" >
+	 <f:validateLength minimum="2" />
+	 </p:inputText>
 	
 	<br/>
 	<p:outputLabel value="Tipo"/>
@@ -73,6 +76,8 @@
                 <f:selectItem itemLabel="celular" itemValue="celular" />
                 <f:selectItem itemLabel="fixo" itemValue="fixo" />
                 <f:selectItem itemLabel="empresarial" itemValue="empresarial"/>
+                
+                 <f:validateLength minimum="1" />
             </p:selectOneMenu>
              
 	<br/>

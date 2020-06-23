@@ -56,19 +56,7 @@ public class DaoGeneric<E> {
 	}
 
 	
-	public List<Pessoa> relatorioPessoaTelefone(){
-		
-		EntityManager entityManager = JPAUtil.getEntityManager();
-
-		String sql = "select p.nome, c.ddd, c.tipo, c.numero from pessoa p INNER JOIN contato c on p.id = c.pessoa_id";
-		javax.persistence.Query query = entityManager.createNativeQuery(sql);
-
-		List<Pessoa> lista = query.getResultList();
-
-		return lista;
-
-		
-	}
+	
 	
 	
 }

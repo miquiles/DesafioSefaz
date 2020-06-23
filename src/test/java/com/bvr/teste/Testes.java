@@ -44,18 +44,72 @@ public class Testes {
 		
 		
 	}
-	//Nao retorna
+	
 	@Test
 	public void listarTodos(){
 		//Pessoa pessoa = new Pessoa();
 		PessoaDao<Pessoa> pessoaDao = new PessoaDao<Pessoa>();
-		List<Pessoa> list = pessoaDao.getListEntity(Pessoa.class);
 		
+		List<Pessoa> list = pessoaDao.listarTodos();
+
 		for(Pessoa pessoa : list) {
-			System.out.println(pessoa);
-			System.out.println();
+			System.out.println(pessoa.getNome());
+			System.out.println(pessoa.getEmail());
+			System.out.println(pessoa.getSenha());
+			System.out.println("---------");
 		}
 		
+		
+		
 	}
-
+	
+	@Test
+	public void listarTelefones() {
+		ContatoDao<Contato> contatoDao = new ContatoDao<>();
+		List<Contato> listTelefones =  contatoDao.listarTodos();
+		
+		for(Contato contato : listTelefones ) {
+			System.out.println(contato.getDdd());
+			System.out.println(contato.getTipo());
+			System.out.println(contato.getNumero());
+			System.out.println(contato.getPessoa());
+			System.out.println("------------------");
+			
+		}
+	}
+	
+	
+	//Editando um registro e retornando o mesmo já editado.
+	@Test
+	public void atualizarPessoa() {
+		PessoaDao<Pessoa> pessoaDao = new PessoaDao<>();
+		Pessoa pessoa = new Pessoa();
+		
+		
+		
+		pessoa.setId(41L);
+		pessoa.setNome("usuarioEditado");
+		pessoa.setEmail("Email editado");
+		pessoa.setSenha("senhaeditada");
+		System.out.println();
+		
+		pessoaDao.update(pessoa);
+		//irá pesquisar no banco o id acima editado. Retornará o registro editado.
+		Pessoa pessoaEditada = (Pessoa) pessoaDao.pesquisar(41L, Pessoa.class);
+		System.out.println(pessoaEditada.getId());
+		
+		System.out.println(pessoaEditada.getNome());
+		System.out.println(pessoaEditada.getEmail());
+		System.out.println(pessoaEditada.getSenha());
+		System.out.println("---------");
+		
+		
+	}
+	
+		
+				
+			
+					
+		
+	
 }

@@ -52,6 +52,7 @@ public class ContatoBean implements Serializable{
 	public String salvarContato() throws Exception {
 		
 		try {
+			
 		contato.setPessoa(user);
 		contatoDao.salvar(contato);
 		contato = new Contato();

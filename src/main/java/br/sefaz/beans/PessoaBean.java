@@ -12,9 +12,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpSession;
 
-import br.sefaz.Dao.ContatoDao;
+
 import br.sefaz.Dao.PessoaDao;
-import br.sefaz.entidades.Contato;
+
 import br.sefaz.entidades.Pessoa;
 
 /**
@@ -27,9 +27,7 @@ import br.sefaz.entidades.Pessoa;
 @ManagedBean(name = "pessoabean")
 public class PessoaBean implements Serializable {
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	
 	private Pessoa pessoa = new Pessoa();
@@ -40,6 +38,7 @@ public class PessoaBean implements Serializable {
 	private List<Pessoa> listarTodos = new ArrayList<Pessoa>();
 	private List<Pessoa> listarUsuarios = new ArrayList<Pessoa>();
 	private List<Pessoa> listarUser = new ArrayList<Pessoa>();
+	
 	private List<Pessoa> usuarioPesquisaPorNome = new ArrayList<Pessoa>();
 
 	//input pesquisa por nome
@@ -47,18 +46,75 @@ public class PessoaBean implements Serializable {
 		
 	private List<Pessoa> list = new ArrayList<Pessoa>();
 	
-	private List<Pessoa> relatorioPessoaTelefone = new ArrayList<Pessoa>();
-	
-	public void pesquisarPorNome() {
-		listarUser = pessoaDao.pesquisarPorNome(pessoa.getNome());
+	/**
+	 * 
+	 * Indice de verificacoes:
+	 * 
+	 * 1 - Para salvar uma pessoa, Não poderá deixar campos em branco.
+	 * 2 - Irá listar todos os usuários do banco e comparará com os inputs, caso já tenha o valor inputado, retornará uma mensagem de "ja contém usuário"
+	 * 3 - Caso não tenha usuário identico ao input, gravar no banco e retornar mensagem de sucesso!
+	 * 
+	 * 
+	 */
+	public void salvar() {
+		
+		//1
+		if (pessoa.getNome().isEmpty() || pessoa.getEmail().isEmpty() || pessoa.getSenha().isEmpty()) {
+			FacesContext.getCurrentInstance()
+			.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Ops.", "Todos os campos devem ser preenchidos!!"));
+			
+		}else {
+		//2	
+		boolean contemUsuario = false;
+		
+		this.listarUsuarios = this.pessoaDao.listarTodos();
+		
+		for(Pessoa usuarioPesquisa : listarUsuarios) {
+			if (usuarioPesquisa.getEmail().equals(this.pessoa.getEmail())) {
+				contemUsuario =true;
+			}
+		}if(contemUsuario) {
+			FacesContext.getCurrentInstance()
+			.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Vefique!", "Usuario já existe!!!"));
+			
+		}else {
+			
+		//3
+		this.pessoa = pessoaDao.salvarPessoa(pessoa);
+		FacesContext.getCurrentInstance()
+		.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"","Salvo com sucesso"));
+		
+		
+		
+		}
+		}
+		
+		
 	}
 	
 	
-			
+	
+	
+	
+	public void pesquisarPorNome() {
+		listarUser = pessoaDao.pesquisarPorNome(txtNomePesquisa);
+	}
+	
+	
+	/**
+	 * 
+	 * Indice de verificacoes:
+	 * 
+	 * 1 - Se não houver telefone cadastrado, remover com sucesso. Tratou a excessão!
+	 * 2 - Caso usuário pussuir telefone cadastrado, retornar mensagem de erro. (precisará excluir seus telefones)
+	 * 3 - 
+	 * 4 - 
+	 * 
+	 */		
 	public String remover() throws Exception{
 		
 		try {
-			
+			//1
 			pessoaDao.removerPeloID(pessoa);
 			pessoa = new Pessoa();
 			
@@ -67,10 +123,11 @@ public class PessoaBean implements Serializable {
 			.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"","Removido com sucesso!"));
 			
 		} catch (Exception e) {
+				//2
 				if (e.getCause() instanceof org.hibernate.exception.ConstraintViolationException) {
 					
 					FacesContext.getCurrentInstance()
-					.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"","Para remover um usuário precisa-se excluir seus telefones"));
+					.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"","Para remover um usuário precisa-se excluir seus telefones"));
 					
 				}
 		}
@@ -85,7 +142,7 @@ public class PessoaBean implements Serializable {
 		pessoaDao.update(pessoa);
 		
 		FacesContext.getCurrentInstance()
-		.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"","Editado com sucesso!"));
+		.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"","Editado com sucesso!"));
 		
 	}	
 	
@@ -96,9 +153,7 @@ public class PessoaBean implements Serializable {
 		return "login.xhtml";
 	}
 	
-	
-
-
+	//Atribuirá a sessão.
 	private Pessoa usuarioLogado;
 	
 	
@@ -109,44 +164,15 @@ public class PessoaBean implements Serializable {
 		
 	}
 	
-	public void salvar() {
-		
-		if (pessoa.getNome().isEmpty() || pessoa.getEmail().isEmpty() || pessoa.getSenha().isEmpty()) {
-			FacesContext.getCurrentInstance()
-			.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Ops.", "Todos os campos devem ser preenchidos!!"));
-			
-		}else {
-			
-		boolean contemUsuario = false;
-		
-		this.listarUsuarios = this.pessoaDao.listarTodos();
-		
-		for(Pessoa usuarioPesquisa : listarUsuarios) {
-			if (usuarioPesquisa.getEmail().equals(this.pessoa.getEmail())) {
-				contemUsuario =true;
-			}
-		}if(contemUsuario) {
-			FacesContext.getCurrentInstance()
-			.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Vefique!", "Usuario já existe!!!"));
-			
-		}else {
-		
-		this.pessoa = pessoaDao.salvarPessoa(pessoa);
-		FacesContext.getCurrentInstance()
-		.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"","Salvo com sucesso"));
-		
-		
-		
-		}
-		}
-		
-		
-	}
 	
+	
+	
+
 	
 	public void setUsuarioPesquisaPorNome(List<Pessoa> usuarioPesquisaPorNome) {
 		this.usuarioPesquisaPorNome = usuarioPesquisaPorNome;
 	}
+	
 	
 	public List<Pessoa> getUsuarioPesquisaPorNome() {
 		
@@ -263,15 +289,6 @@ public class PessoaBean implements Serializable {
 
 
 
-	public List<Pessoa> getRelatorioPessoaTelefone() {
-		relatorioPessoaTelefone = pessoaDao.relatorioPessoaTelefone();
-		return relatorioPessoaTelefone;
-	}
-
-
-	public void setRelatorioPessoaTelefone(List<Pessoa> relatorioPessoaTelefone) {
-		this.relatorioPessoaTelefone = relatorioPessoaTelefone;
-	}
 
 
 
