@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
+
 
 import br.sefaz.Dao.ContatoDao;
 import br.sefaz.Dao.DaoGeneric;
@@ -45,7 +45,7 @@ public class ContatoBean implements Serializable{
 	
 	@PostConstruct
 	public void init() {
-		
+		//Metodo carregará a pessoa selecionada para cadastrar seus telefones. Será passado pelo setParan
 		String coduser = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("codigouser");
 		user = daoGeneric.pesquisar(Long.parseLong(coduser), Pessoa.class);
 	}
@@ -132,7 +132,7 @@ public class ContatoBean implements Serializable{
 		this.daoGeneric = daoGeneric;
 	}
 
-
+	//Listará todos os telefones da pessoa selecionada assim que abrir a tela
 	public List<Contato> getListaTelefones() {
 		listaTelefones = contatoDao.listarTodos();
 		return listaTelefones;

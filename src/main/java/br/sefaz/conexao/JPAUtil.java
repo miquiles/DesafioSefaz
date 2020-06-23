@@ -23,7 +23,7 @@ public class JPAUtil {
 		 
 		if (factory == null) {
 		
-		factory = Persistence.createEntityManagerFactory("BVR-PU");
+		factory = Persistence.createEntityManagerFactory("SEFAZ-PU");
 		
 		}
 	}

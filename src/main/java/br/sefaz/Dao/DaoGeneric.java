@@ -89,7 +89,7 @@ public E update(E entidade) {
 		entityTransaction.begin();
 		
 		//Merge atualiza se receber um id do objeto
-		E e = entityManager.merge(entidade);
+		E e = (E) entityManager.merge(entidade);
 		entityTransaction.commit();
 		entityManager.close();
 		

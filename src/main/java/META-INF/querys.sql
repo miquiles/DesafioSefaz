@@ -55,7 +55,7 @@ ALTER TABLE public.hibernate_sequence
   
   insert into Pessoa(nome,sobrenome,email,cpf,sexo) values ('luiz','silva','silva@gmail.com','112','masculino');
   
-  
+  //inner join
   select p.nome, c.ddd, c.tipo, c.numero from pessoa p INNER JOIN contato c on p.id = c.pessoa_id;
 
   

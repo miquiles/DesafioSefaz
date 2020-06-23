@@ -1,4 +1,4 @@
-package com.bvr.teste;
+package com.sefaz.teste;
 
 import java.sql.SQLException;
 /**
@@ -25,8 +25,9 @@ public class Testes {
 		Contato telefoneUser = new Contato();
 		telefoneUser.setDdd(71);
 		
-		telefoneUser.setTipo("Empresarial");
-		telefoneUser.setNumero("3397-5465");
+		
+		telefoneUser.setTipo("TesteEmpresarial");
+		telefoneUser.setNumero("Teste3397-5465");
 		telefoneUser.setPessoa(pessoa);
 		contatoDao.salvar(telefoneUser);
 	}

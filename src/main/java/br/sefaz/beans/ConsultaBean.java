@@ -1,6 +1,8 @@
 package br.sefaz.beans;
 
 import java.util.ArrayList;
+
+
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -9,6 +11,10 @@ import javax.faces.bean.SessionScoped;
 import br.sefaz.Dao.DaoGeneric;
 import br.sefaz.entidades.Contato;
 import br.sefaz.entidades.Pessoa;
+
+/**
+ * @author Pedro Miquiles
+ */
 @SessionScoped
 @ManagedBean(name = "consultabean")
 public class ConsultaBean {
@@ -37,7 +43,7 @@ public class ConsultaBean {
 	}
 
 
-
+	//Carregará a lista feita com inner join entre Pessoa e Telefones
 	public List<Contato> getLista() {
 		lista = daoGeneric.todos();
 		return lista;
