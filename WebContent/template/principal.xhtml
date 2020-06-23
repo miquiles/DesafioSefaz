@@ -4,123 +4,18 @@
 	xmlns:p="http://primefaces.org/ui"
 	 xmlns:ui="http://java.sun.com/jsf/facelets">
 
+<link rel="stylesheet" type="text/css"
+		href="#{facesContext.externalContext.requestContextPath}/resources/css/principal-estilo.css"
+		media="screen" />
 
-
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
-<style>
-.ui-panelgrid {
-	text-align: center;
-}
-
-.customPanelGrid .ui-panelgrid-content {
-	align-items: center;
-}
-
-
-
-
-
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family:monospace ;
-	
-}
-
-header {
-	position: fixed;
-	left: 0;
-	top: 0px;
-	width: 20%;
-	height:100%;
-	padding: 65px 0;
-	text-align: center;
-	background: #2f3233;
-}
-
-
-
-
-
-
-a {
-	text-decoration:none;
-	
-	color: white;
-	size: 10px;
-	
-	font-size: 25px;
-	font-family: sans-serif;
-	
-}
-
-h2 {
-	text-align: center;
-	color: grey;
-}
-
-
-
-
-
-
-
-
-
-.center {
-	max-width: 1100px;
-	margin: 0 auto;
-	padding: 0 2%;
-}
-
-
-.usuario{
-
-    align-items: center;
-    align-items: center;
-    /* padding: 87px; */
-    margin-top: 85px;
-    color: #d3d368;
-    font-size: 17px;
-    font-family: sans-serif;
-    border: solid;
-    border-color: #314f61;
-    border-radius: 20px;
-}
-
-.sair{
-color: #cccaca;
-font-size: 15px;
-}
-.trocarSenha{
-color: #cccaca;
-font-size: 15px;
-}
-.img{
-width: 75px;
-margin-bottom: 14px;
-margin-left: 0px;
-
-}
-
-
-
-</style>
 
 <h:form id="template">
-
-
-
-
-
-
 
 	<header>
 
 		<div class="center">
-
+		
+		
 			<nav>
 
 				<ul>
@@ -128,6 +23,13 @@ margin-left: 0px;
 					
 					<h:link>
 						<a href="index.xhtml" class="index"> Lista de usuários </a>
+						<br/>
+							<br/>
+						
+					</h:link>
+					
+					<h:link>
+						<a href="relatorio.xhtml" class="telefones"> Lista de Telefones </a>
 						<br/>
 							<br/>
 						
@@ -177,7 +79,7 @@ margin-left: 0px;
 				<p:outputLabel style="color:white;">Usuário : </p:outputLabel>
 				<p:outputLabel value="#{pessoabean.usuarioLogado.nome}"/>
 		
-				<p:outputLabel value="#{pessoabean.usuarioLogado.sobrenome}"/>
+				
 			
 			<br/>
 			
@@ -189,11 +91,11 @@ margin-left: 0px;
 			
 			
 			<h:link>
-						<a class="sair" href="login.xhtml"> Sair</a>
-						</h:link>
+						<p:commandLink><a class="sair" href="login.xhtml"> Sair</a>
+					</p:commandLink>	</h:link>
 						
 </div>
 </header>
 </h:form>
- <script type="text/javascript" src="js/materialize.min.js"></script>
+
 </html>

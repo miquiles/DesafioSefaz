@@ -5,65 +5,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-
+<link rel="stylesheet" type="text/css"
+		href="#{facesContext.externalContext.requestContextPath}/resources/css/index.css"
+		media="screen" />
 
 
 	<ui:include src="/template/principal.xhtml" />
 
-	<style>
-.index{
 	
-	
-	color:#7159c1;
-	
-	
-}	
-	
-h1{
-    font-family: sans-serif;
-font-size: 20px;    
-}	
-
-
-	
-.ui-datatable-tablewrapper {
-	border-style: outset;
-}
-
-.conteudo {
-	margin-left: 366px;
-	width: 900px;
-	height: 584px;
-	margin-top: 19px;
-	background-color: #fafafa;
-	padding: 20px;
-	border-style: inset;
-}
-
-.input-block {
-	font-family: sans-serif;
-}
-
-.novoUsuario {
-	inline-size: min-content;
-	height: 349px;
-	font-family: Roboto, Arial, sans-serif;
-}
-
-.p {
-	font-family: sans-serif;
-}
-
-.msg {
-	margin-left: 990;
-	margin-top: -19px;
-}
-
-
-
-
-
-</style>
 	<h:outputStylesheet name="primeicons/primeicons.css"
 		library="primefaces" />
 	<h:outputStylesheet library="webjars"
@@ -80,9 +29,7 @@ font-size: 20px;
 
 <h:form>
 
-	<div class="descricao">
-		<h:graphicImage url="/resources/img/delete.png" width="25" height="25" />
-	</div>
+	
 
 	<div class="msg">
 		<p:messages id="messages" showDetail="true" closable="true">
@@ -95,52 +42,45 @@ font-size: 20px;
 
 
 		<div class="novoUsuario">
+		
 
 
 
-
+<h1>Cadastre um usuário</h1>
+<br/>
+			
 			<p:outputLabel value="Nome" />
 			<p:inputText  value="#{pessoabean.pessoa.nome}"
-				style="width:170px" />
-			<p:outputLabel value="Sobenome" />
-			<p:inputText value="#{pessoabean.pessoa.sobrenome}"
-				style="width:170px" />
+				/>
+			
 			<p:outputLabel value="Email" />
 			<p:inputText  value="#{pessoabean.pessoa.email}"
-				style="width:170px" />
-			<p:outputLabel value="CPF" />
-			<p:inputText  value="#{pessoabean.pessoa.CPF}"
-				style="width:170px" />
-			<p:outputLabel value="Sexo" />
-			<p:selectOneMenu id="sexo" value="#{pessoabean.pessoa.sexo}"
-				style="width:170px">
-				<f:selectItem itemLabel="Selecione o sexo...	" itemValue="" />
-				<f:selectItem itemLabel="Masculino" itemValue="masculino" />
-				<f:selectItem itemLabel="Feminino" itemValue="feminino" />
-				<f:selectItem itemLabel="Outros" itemValue="outros" />
-			</p:selectOneMenu>
+				 />
+			
+			
 			<p:outputLabel value="Senha" />
-			<p:password placeholder="Senha" value="#{pessoabean.pessoa.senha}"
-				style="width:170px" />
-
-			<p:commandButton value="Adicionar" action="#{pessoabean.update}"
-				style="width:85px" />
-			<p:commandButton value="Limpar" action="#{pessoabean.limparCampos}"
-				update="@form" />
-
+			<p:password  value="#{pessoabean.pessoa.senha}"
+				/>
+				<br/>
+			<h:commandButton value="Salvar" action="#{pessoabean.salvar}"
+				 />
+				
+			
+			
 
 
 
 		</div>
+		<h:graphicImage class="imgIndex" value="/resources/img/uxIndex.png" />
+	<div class="pesquisar">
 
-		<div class="pesquisar">
-
-			<p:inputText placeholder="Por Id" value="#{pessoabean.pessoa.id}"/>
-			<p:commandButton   action="#{pessoabean.pesquisarId}" target="#{pessoabean.pessoa}" update=":resultPesquisa" 
+			<p:inputText placeholder="Pesquisar Nome" value="#{pessoabean.txtNomePesquisa}"/>
+			<p:commandButton id="teste"  action="#{pessoabean.pesquisarPorNome}" target="#{pessoabean.pessoa}" update=":resultPesquisa" 
 			oncomplete="PF('dialogPesquisar').show();" icon="pi pi-search"/>
 
 
 		</div>
+		
 		<f:metadata>
 
 			<f:viewAction action="#{pessoabean.atualizarUsuarioLogado}" />
@@ -149,8 +89,9 @@ font-size: 20px;
 		<h1>Lista de todos os usuários</h1>
 		
 
-		<p:dataTable border="2" value="#{pessoabean.testeListar}" var="p"
+		<p:dataTable border="2" value="#{pessoabean.listarTodos}" var="p"
 			scrollable="true" scrollHeight="100">
+			
 			<p:column headerText="Id" footerText="Id">
 
 				<h:outputText value="#{p.id}" />
@@ -164,27 +105,13 @@ font-size: 20px;
 
 			</p:column>
 
-			<p:column headerText="Sobrenome" footerText="Sobrenome">
-
-				<h:outputText value="#{p.sobrenome}" />
-
-			</p:column>
-
-			<p:column headerText="CPF" footerText="CPF">
-
-				<h:outputText value="#{p.CPF}" />
-
-			</p:column>
 			<p:column headerText="Email" footerText="Email">
 
 				<h:outputText value="#{p.email}" />
 
 			</p:column>
 
-			<p:column headerText="Sexo" footerText="Sexo">
-				<h:outputText value="#{p.sexo}" />
-
-			</p:column>
+			
 
 
 			<p:column headerText="Senha" footerText="Senha">
@@ -198,13 +125,14 @@ font-size: 20px;
 
 			<p:column headerText="Editar" footerText="Editar" style="color:blue;">
 
-				<h:commandLink update="@form" >
+				<p:commandLink oncomplete="PF('dialogEditar').show()" update=":formEditar">
+				
 					<h:graphicImage url="/resources/img/editar.png" width="25"
 						height="25" />
 					<f:setPropertyActionListener value="#{p}"
 						target="#{pessoabean.pessoa}">
 					</f:setPropertyActionListener>
-				</h:commandLink>
+				</p:commandLink>
 			</p:column>
 			
 
@@ -256,7 +184,7 @@ font-size: 20px;
 <p:dialog modal="true" widgetVar="dialogPesquisar" rendered="true" width="600" height="200" header="Resultado da Pesquisa" footer="Pesquisa por ID">
 <h:form id="resultPesquisa">
 
-<p:dataTable value="#{pessoabean.usuarioPesquisa}" var="p"
+<p:dataTable value="#{pessoabean.usuarioPesquisaPorNome}" var="p"
 			scrollable="true" scrollHeight="100">
 			<p:column headerText="Id" footerText="Id">
 
@@ -271,29 +199,14 @@ font-size: 20px;
 
 			</p:column>
 
-			<p:column headerText="Sobrenome" footerText="Sobrenome">
-
-				<h:outputText value="#{p.sobrenome}" />
-
-			</p:column>
-
-			<p:column headerText="CPF" footerText="CPF">
-
-				<h:outputText value="#{p.CPF}" />
-
-			</p:column>
+			
 			<p:column headerText="Email" footerText="Email">
 
 				<h:outputText value="#{p.email}" />
 
 			</p:column>
 
-			<p:column headerText="Sexo" footerText="Sexo">
-				<h:outputText value="#{p.sexo}" />
-
-			</p:column>
-
-
+			
 			<p:column headerText="Senha" footerText="Senha">
 
 				<h:outputText value="#{p.senha}" />
@@ -303,29 +216,6 @@ font-size: 20px;
 
 
 
-			<p:column headerText="Editar" footerText="Editar" style="color:blue;">
-
-				<h:commandLink update="@form">
-					<h:graphicImage url="/resources/img/editar.png" width="25"
-						height="25" />
-					<f:setPropertyActionListener value="#{p}"
-						target="#{pessoabean.pessoa}">
-					</f:setPropertyActionListener>
-				</h:commandLink>
-			</p:column>
-
-			<p:column headerText="Deletar" footerText="Deletar"
-				style="color:blue;">
-
-				<p:commandLink update="@form" action="#{pessoabean.remover}">
-					<h:graphicImage url="/resources/img/delete.png" width="25"
-						height="25" />
-					<f:setPropertyActionListener value="#{p}"
-						target="#{pessoabean.pessoa}">
-					</f:setPropertyActionListener>
-				</p:commandLink>
-			</p:column>
-
 			
 
 
@@ -334,6 +224,44 @@ font-size: 20px;
 		</h:form>
 		
 </p:dialog>
+
+
+
+<p:dialog modal="true" widgetVar="dialogEditar" rendered="true" width="400" height="300" header="Editar um usuário" >
+<h:form id="formEditar">
+			
+			
+			<p:outputLabel value="Id" style="margin-left: 10px;"/>
+			<p:inputText  value="#{pessoabean.pessoa.id}" disabled="true"
+			style="width:20%"	/>
+			
+			
+			
+			<p:outputLabel value="Nome" style="margin-left: 10px;" />
+			<p:inputText  value="#{pessoabean.pessoa.nome}"
+			style="width:60%"	/>
+			
+			<p:outputLabel value="Email" style="margin-left: 10px;"/>
+			<p:inputText  value="#{pessoabean.pessoa.email}"
+					style="width:60%"	 />
+			
+			
+			<p:outputLabel value="Senha" style="margin-left: 10px;"/>
+			<p:password  value="#{pessoabean.pessoa.senha}"
+				style="width:60%"		/>
+
+
+
+			
+
+<h:commandButton value="Atualizar" action="#{pessoabean.update}" 	style="width:60%"	/>
+
+	
+		</h:form>
+		
+</p:dialog>
+
+
 
 
 </h:body>

@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+
+
+<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<link rel="stylesheet" type="text/css"
+		href="#{facesContext.externalContext.requestContextPath}/resources/css/cad_telefones.css"
+		media="screen" />
+
+</h:head>
+
+<h:body>
+
+<h:form>
+		
+	
+<ui:include src="/template/principal.xhtml"/>
+
+ 
+	
+	<div class="conteudo">
+	
+	
+<h1> Aqui retornará uma lista de Pessoas e Telefones com Inner Join</h1>
+
+	
+	
+	<div class="TelefoneUser">
+	
+
+	
+	</div>
+	
+	
+
+		<!-- 
+	
+	<p:dataTable border="2" value="#{pessoabean.relatorioPessoaTelefone}" var="pessoa"
+			scrollable="true" scrollHeight="200" >
+			
+			
+			
+
+			<p:column  headerText="Nome" footerText="Nome" width="15">
+
+				<h:outputText value="#{pessoa.nome}" />
+
+			</p:column>
+			
+			
+			<p:column headerText="DDD" footerText="DDD" width="60">
+
+				<h:outputText value="#{contato.ddd}" />
+
+			</p:column>
+			
+
+			<p:column headerText="Numero" footerText="Numero" width="60">
+
+				<h:outputText value="#{contato.numero}" />
+
+			</p:column>
+
+			
+
+
+			<p:column headerText="Tipo" footerText="Tipo" width="50">
+
+				<h:outputText value="#{contato.tipo}" />
+
+			</p:column>
+
+
+
+</p:dataTable>
+ -->
+
+
+			
+
+</div>
+		
+	
+	
+
+<f:metadata>
+
+			<f:viewAction action="#{pessoabean.atualizarUsuarioLogado}" />
+		</f:metadata>
+		</h:form>
+</h:body>
+</html>

@@ -5,53 +5,134 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
+
+
 <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
 	<link rel="stylesheet" type="text/css"
-		href="#{facesContext.externalContext.requestContextPath}/resources/css/principal-estilo.css"
+		href="#{facesContext.externalContext.requestContextPath}/resources/css/cad_telefones.css"
 		media="screen" />
 
 </h:head>
 
 <h:body>
 
-   <header>
-			<nav>
+<h:form>
+<f:metadata>
 
-				<ul>
-				
-				
-			
-
-			
-				
-				
-					
-					
-				</ul>
-
-			</nav>
-			
-			<div>
-	
-	
-	</div>
-
+			<f:viewAction action="#{pessoabean.atualizarUsuarioLogado}" />
+		</f:metadata>
 		
-	</header>
+	</h:form>
+<ui:include src="/template/principal.xhtml"/>
 
+ 
 	<h:form>
+	<div class="msg">
+			<p:messages id="messages" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
+
+		</div>
 	
-	<h1>Telefones</h1>
+	<div class="conteudo">
+	
+	
+
+
+	
+	<h1>Salvar telefones para </h1>
+	<div class="TelefoneUser">
+	
 	<h:outputLabel value="#{contatobean.user.nome}" /> 
 	
-	<p:inputText value="#{contatobean.contato.numero}" placeholder="n"/>
-	<p:inputText value="#{contatobean.contato.tipo}" placeholder="t"/>
+	</div>
+	<br/>
+	<p:outputLabel value="DDD"/>
+	<br/>
 	
-	<p:commandButton value="salvar" action="#{contatobean.salvarContato}"/>
+	<p:selectOneMenu id="ddd" value="#{contatobean.contato.ddd}"  label="DDD" style="width: 189px;">
+                <f:selectItem itemLabel="Selecione.." itemValue="" noSelectionOption="true" />
+                <f:selectItem itemLabel="81" itemValue="81" />
+                <f:selectItem itemLabel="11" itemValue="11" />
+                <f:selectItem itemLabel="21" itemValue="21" />
+                
+                
+            </p:selectOneMenu>
+	
+	<br/>
+	<p:outputLabel value="Numero"/>
+	<br/>
+	<p:inputText value="#{contatobean.contato.numero}"  style="margin-left:0;" maxlength="9" placeholder="88888-8888" />
+	
+	<br/>
+	<p:outputLabel value="Tipo"/>
+	<br/>
+	
+	<p:selectOneMenu id="tipo" value="#{contatobean.contato.tipo}"  label="tipo" style="width: 189px;">
+                <f:selectItem itemLabel="Selecione.." itemValue="" noSelectionOption="true" />
+                <f:selectItem itemLabel="celular" itemValue="celular" />
+                <f:selectItem itemLabel="fixo" itemValue="fixo" />
+                <f:selectItem itemLabel="empresarial" itemValue="empresarial"/>
+            </p:selectOneMenu>
+             
+	<br/>
+	<br/>
+	<h:commandButton value="salvar" action="#{contatobean.salvarContato}"/>
+	<br/>
 
+		
 	
-	
+	<p:dataTable border="2" value="#{contatobean.user.contato}" var="contato"
+			scrollable="true" scrollHeight="200" >
+			
+			
+			
+
+			<p:column  headerText="DDD" footerText="DDD" width="15">
+
+				<h:outputText value="#{contato.ddd}" />
+
+			</p:column>
+
+			<p:column headerText="Numero" footerText="Numero" width="60">
+
+				<h:outputText value="#{contato.numero}" />
+
+			</p:column>
+
+			
+
+
+			<p:column headerText="Tipo" footerText="Tipo" width="50">
+
+				<h:outputText value="#{contato.tipo}" />
+
+			</p:column>
+
+
+
+
+
+			<p:column headerText="Deletar" footerText="Deletar"
+				style="color:blue;" width="50">
+
+				<p:commandLink update="@form" action="#{contatobean.removerTelefone}">
+					<h:graphicImage url="/resources/img/delete.png" width="25"
+						height="25" />
+					<f:setPropertyActionListener value="#{contato}"
+						target="#{contatobean.contato}">
+					</f:setPropertyActionListener>
+				</p:commandLink>
+			</p:column>
+
+
+			
+
+
+		</p:dataTable>
+	</div>
 	</h:form>
+
 
 </h:body>
 </html>

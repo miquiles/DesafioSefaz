@@ -4,56 +4,52 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<h:outputStylesheet name="primeicons/primeicons.css"
-		library="primefaces" />
-		
 	<link rel="stylesheet" type="text/css"
 		href="#{facesContext.externalContext.requestContextPath}/resources/css/estilo.css"
 		media="screen" />
 </h:head>
 
 <h:body>
-
 	<h:form>
-	<!--  Mensagens de interação -->
 		<div class="msg">
 			<p:messages id="messages" showDetail="true" closable="true">
 				<p:autoUpdate />
 			</p:messages>
 
 		</div>
-		
-		<!--  Formulario de login -->
 
 		<div class="center">
 
 
 
 			<div class="input-block">
+				<p:outputLabel value="Nome" />
+				<h:inputText value="#{pessoabean.pessoa.nome}" />
 				<br />
 				<p:outputLabel value="Email" />
-				<p:inputText value="#{loginbean.txtEmail}" />
+				<h:inputText value="#{pessoabean.pessoa.email}" />
 
 			</div>
 
 			<div class="input-block">
-				<p:outputLabel value="Senha" />
-				<p:password value="#{loginbean.txtSenha}" />
+				<p:outputLabel value="Senha" icon="pi pi-lock" />
+				<h:inputSecret value="#{pessoabean.pessoa.senha}" />
 
 			</div>
-			<h:commandButton value="Acessar" update="@form"
-				action="#{loginbean.entrar}" />
-			<br /> <br />
+			<h:commandButton action="#{pessoabean.salvar}" value="Salvar"
+				update="@form" />
+				<h:commandButton value="Entrar" action="/paginas/login.xhtml" />
+				
+			<br />
+			
 
-			<h:commandLink action="/paginas/cadastro.xhtml"
-				value="Desejo me cadastrar" />
 			<div class="foto">
 				<h:graphicImage class="img" value="/resources/img/login.svg" />
 
 
 			</div>
 
-			
+			<div class="redes"></div>
 
 		</div>
 

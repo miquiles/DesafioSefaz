@@ -1,15 +1,18 @@
 package com.bvr.teste;
 
 import java.sql.SQLException;
+/**
+ * @author Pedro Miquiles
+ */
+import java.util.List;
 
 import org.junit.Test;
 
-
-import br.bvr.Dao.ContatoDao;
-import br.bvr.Dao.DaoGeneric;
-import br.bvr.Dao.PessoaDao;
-import br.bvr.entidades.Contato;
-import br.bvr.entidades.Pessoa;
+import br.sefaz.Dao.ContatoDao;
+import br.sefaz.Dao.DaoGeneric;
+import br.sefaz.Dao.PessoaDao;
+import br.sefaz.entidades.Contato;
+import br.sefaz.entidades.Pessoa;
 
 public class Testes {
 	
@@ -20,8 +23,10 @@ public class Testes {
 		Pessoa pessoa = (Pessoa) genericDAO.pesquisar(1L, Pessoa.class);
 		
 		Contato telefoneUser = new Contato();
+		telefoneUser.setDdd(71);
+		
 		telefoneUser.setTipo("Empresarial");
-		telefoneUser.setNumero("(61) 3397-5465");
+		telefoneUser.setNumero("3397-5465");
 		telefoneUser.setPessoa(pessoa);
 		contatoDao.salvar(telefoneUser);
 	}
@@ -32,13 +37,24 @@ public class Testes {
 		Pessoa pessoa = new Pessoa();
 		PessoaDao<Pessoa> pessoaDao = new PessoaDao<Pessoa>();
 		
-		pessoa.setNome("pessoaTeste");
-		pessoa.setSobrenome("da silva");
-		pessoa.setCPF("190");
-		pessoa.setEmail("@teste");
-		pessoa.setSexo("robô");
+		pessoa.setNome("Pessoa2");
+		pessoa.setEmail("@testes");
+		pessoa.setSenha("@testes");
 		pessoaDao.salvarPessoa(pessoa);
 		
+		
+	}
+	//Nao retorna
+	@Test
+	public void listarTodos(){
+		//Pessoa pessoa = new Pessoa();
+		PessoaDao<Pessoa> pessoaDao = new PessoaDao<Pessoa>();
+		List<Pessoa> list = pessoaDao.getListEntity(Pessoa.class);
+		
+		for(Pessoa pessoa : list) {
+			System.out.println(pessoa);
+			System.out.println();
+		}
 		
 	}
 

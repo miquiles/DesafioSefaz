@@ -1,0 +1,30 @@
+h1{
+    font-family: sans-serif;
+font-size: 20px;    
+}	
+
+
+	
+.ui-datatable-tablewrapper {
+	border-style: outset;
+}
+
+.conteudo {
+	margin-left: 366px;
+	width: 900px;
+	height: 584px;
+	margin-top: 19px;
+	background-color: #fafafa;
+	padding: 20px;
+	border-style: inset;
+}
+.telefones{
+	
+	    color: #afa7ef;
+    font-style: italic;
+}
+.msg {
+	margin-left: 990;
+	margin-top: -19px;
+}
+

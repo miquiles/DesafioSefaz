@@ -1,0 +1,79 @@
+h1{
+font-family: sans-serif;
+font-size: 20px;    
+   
+}	
+
+Label{
+font-family: sans-serif;
+font-size: 20px;    
+
+
+}
+	
+.ui-datatable-tablewrapper {
+	border-style: outset;
+}
+
+.conteudo {
+	margin-left: 366px;
+	width: 900px;
+	height: 584px;
+	margin-top: 19px;
+	background-color: #fafafa;
+	padding: 20px;
+	border-style: inset;
+	
+}
+
+.msg {
+	margin-left: 990;
+	
+}
+
+.telefoneUser{
+	margin-left: 25%;
+    margin-top: -24px;	
+}
+
+
+input[type="submit"] {
+    width: 25%;
+    display: block;
+    margin-top: 0px;
+    padding: 12px;
+    font-size: 16px;
+    color: #7159c1;
+    border-radius: 6px;
+    border: 1px solid #ccddef;
+    outline-color: #7159c1;
+    margin-left: 0px;
+}
+
+
+input[type="text"] {
+        width: 25%;
+    display: block;
+    margin-top: 0px;
+    padding: 8px;
+    font-size: 16px;
+    color: #7159c1;
+    border-radius: 6px;
+    border: 1px solid #ccddef;
+    outline-color: #7159c1;
+    margin-left: 9px;
+    
+}
+input[type="password"]{
+	   width: 50%;
+    display: block;
+    margin-top: 0px;
+    padding: 8px;
+    font-size: 16px;
+    color: #7159c1;
+    border-radius: 6px;
+    border: 1px solid #ccddef;
+    outline-color: #7159c1;
+    margin-left: 9px;
+    
+}
