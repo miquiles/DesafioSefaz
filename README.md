@@ -2,8 +2,8 @@
 
 ## Desafio Sefaz 
 
-#CRUD 
-#JAVA, JPA Hibernate, PostGreSql, JSF, Primefaces, HTML e CSS;
+.CRUD :  
+.JAVA, JPA Hibernate, PostGreSql, JSF, Primefaces, HTML e CSS;
 
 Apresentação :  
 
